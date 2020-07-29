@@ -1,4 +1,4 @@
-package com.maciek.radek.PokemonCardRouletteWeb;
+package com.pokemonCardRouletteWeb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
