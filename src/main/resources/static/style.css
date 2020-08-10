@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+/* LOGO */
+
+body {
+  background: url("https://wallpaperplay.com/walls/full/b/1/8/49413.jpg") no-repeat center fixed;
+  background-size: 100% 100%;
+  background-blend-mode: lighten;
+}
+
+img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 50%;
+
+}
+
+/* CZCIONKA */
+
+@font-face {
+   font-family: myFirstFont;
+   src: url(pokemon_pixel_font.ttf);
+}
+
+* {
+   font-family: myFirstFont;
+}
+
+/* MENU BAR */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  width: 15.4%; /* Six links of equal widths */
+  text-align: center;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.navbar a.active {
+  background-color: #4CAF50;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+/* STOPKA */
+
+.footer {
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+}
+
+
