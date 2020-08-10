@@ -2,12 +2,6 @@
 
 /* LOGO */
 
-body {
-  background: url("https://wallpaperplay.com/walls/full/b/1/8/49413.jpg") no-repeat center fixed;
-  background-size: 100% 100%;
-  background-blend-mode: lighten;
-}
-
 img {
         max-width: 100%;
         height: auto;
@@ -21,12 +15,12 @@ img {
 /* CZCIONKA */
 
 @font-face {
-   font-family: myFirstFont;
+   font-family: pokemon;
    src: url(pokemon_pixel_font.ttf);
 }
 
 * {
-   font-family: myFirstFont;
+   font-family: pokemon;
 }
 
 /* MENU BAR */
@@ -67,7 +61,7 @@ li a:hover:not(.active) {
   color: white;
   text-decoration: none;
   font-size: 17px;
-  width: 15.4%; /* Six links of equal widths */
+  width: 15.3%; /* Six links of equal widths */
   text-align: center;
 }
 
@@ -91,6 +85,52 @@ li a:hover:not(.active) {
 .active {
   background-color: #4CAF50;
 }
+
+/* TEXT BOX */
+
+
+
+.textBox {
+  width: 470px;
+  margin: 50px auto;
+  border: 4px solid #99b3ff;
+  padding: 20px;
+  font-weight: 100;
+  color: #000000;
+  font-family: pokemon;
+  position: absolute;
+  top: 240px;
+  left: 190px;
+}
+
+
+.box1:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #99b3ff;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #99b3ff;
+  border-bottom: 10px solid transparent;
+  right: -21px;
+  top: 6px;
+}
+
+.box1:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 7px solid #fff;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #fff;
+  border-bottom: 7px solid transparent;
+  right: -11px;
+  top: 10px;
+}
+
+
 
 /* STOPKA */
 
