@@ -3,12 +3,18 @@ package com.pokemonCardRouletteWeb.Controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.pokemonCardRouletteWeb.Data.Gracz;
+
 @Controller
 public class KartaDniaController {
 
 	
-    @GetMapping("/karta_dnia")
+    @GetMapping("/kartaDnia")
     public String stronaKartyDnia() {
+    	
+    	if(Gracz.nick.equals(""))
+    		return "redirect:/logowanie";
+    	
         return "kartaDnia";
     }
 	
