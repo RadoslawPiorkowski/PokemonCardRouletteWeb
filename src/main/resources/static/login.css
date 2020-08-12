@@ -132,6 +132,7 @@ li a:hover:not(.active) {
 /* STOPKA */
 
 .footer {
+    font-family: VT323;
 	position: fixed;
     left: 0;
     bottom: 0;
