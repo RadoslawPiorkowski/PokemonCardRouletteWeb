@@ -3,7 +3,7 @@ package com.pokemonCardRouletteWeb.Data;
 public class Gracz {
 	
 	public static int id = 2;
-	public static String nick;
+	public static String nick = "Ash";
 	public static String mail;
 	
 	
