@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=VT323');
+
+body {
+font-family: 'VT323', monospace;
+}
+
+
 /* LOGO */
 
 img {
@@ -10,17 +17,6 @@ img {
 		margin-right: auto;
 		width: 50%;
 
-}
-
-/* CZCIONKA */
-
-@font-face {
-   font-family: pokemon;
-   src: url(pokemon_pixel_font.ttf);
-}
-
-* {
-   font-family: pokemon;
 }
 
 /* MENU BAR */
@@ -60,6 +56,7 @@ li a:hover:not(.active) {
   padding: 12px;
   color: white;
   text-decoration: none;
+  font-family: VT323;
   font-size: 17px;
   width: 15.3%; /* Six links of equal widths */
   text-align: center;
@@ -97,7 +94,7 @@ li a:hover:not(.active) {
   padding: 20px;
   font-weight: 100;
   color: #000000;
-  font-family: pokemon;
+  font-family: VT323;
   position: absolute;
   top: 240px;
   left: 190px;
@@ -163,6 +160,7 @@ li a:hover:not(.active) {
 	text-align: center;
     background-color: #5891ff;
     border-radius: 50%;
+    font-family: VT323;
     font-size: 40px;
     color: white;
     width: 100px;
@@ -181,6 +179,7 @@ li a:hover:not(.active) {
 .registration-form .create-account{
     border-radius: 30px;
     padding: 10px 20px;
+      font-family: VT323;
     font-size: 18px;
     font-weight: bold;
     background-color: #5791ff;
@@ -208,6 +207,7 @@ li a:hover:not(.active) {
 }
 
 .registration-form .social-icons a{
+  font-family: VT323;
     font-size: 23px;
     margin: 0 3px;
     color: #5691ff;
@@ -234,6 +234,7 @@ li a:hover:not(.active) {
     .registration-form .form-icon{
         width: 70px;
         height: 70px;
+          font-family: VT323;
         font-size: 30px;
         line-height: 70px;
     }
@@ -246,6 +247,7 @@ li a:hover:not(.active) {
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
+  font-family: VT323;
   font-size: 18px;
   -webkit-user-select: none;
   -moz-user-select: none;
