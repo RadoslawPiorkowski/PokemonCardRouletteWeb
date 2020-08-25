@@ -32,14 +32,16 @@ public class PosiadaneKarty{
 	
 
 
-	public static void pobierzKartyGraczaZBazyDanych(Gracz gracz) {
+	public static void pobierzKartyGraczaZBazyDanych() {
 
+		wyczyscListeKart();
+		
 		try {
 
             ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM Gracz_Karta");
             
             while (data.next()) 
-            	if(data.getInt("gracz_id") == gracz.id) 
+            	if(data.getInt("gracz_id") == GraczZalogowany.id) 
             		listaKart.add(getKartaPoID(data.getInt("karta_id")));
             
         	listaKart.sort(new KartyComparator());

@@ -6,7 +6,7 @@ import com.pokemonCardRouletteWeb.BazaDanych;
 
 public class GraczZalogowany {
 
-	public static int id = 2;
+	public static int id = 0;
 	public static String nick = "";
 	public static String mail = "";
 	public static String haslo = "";
@@ -15,9 +15,8 @@ public class GraczZalogowany {
 	
 	public static void zaloguj(Gracz gracz) {
 		GraczZalogowany.nick = gracz.nick;
-		GraczZalogowany.haslo = gracz.haslo;
-		GraczZalogowany.id = getIdFromDB(gracz);
-		GraczZalogowany.mail = getMailFromDB(gracz);
+		GraczZalogowany.id = getIdFromDB(gracz.nick);
+		GraczZalogowany.mail = getMailFromDB(gracz.nick);
 	}
 	
 	
@@ -54,34 +53,38 @@ public class GraczZalogowany {
 		GraczZalogowany.haslo = haslo;
 	}
 	
-	public static int getIdFromDB(Gracz gracz) {
+	public static int getIdFromDB(String nick) {
 		
 		try {
-            ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT id_gracz FROM gracz where nick = '"+gracz.nick+"';");
+            ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM gracz where nick = '"+nick+"';");
             
             data.next();
-            int id = data.getInt(1);
-            
+            int id = data.getInt("id_gracz");
+    		return id;
+    		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return id;
+		return 0;
+
 	}
 	
 	
-	public static String getMailFromDB(Gracz gracz) {
+	public static String getMailFromDB(String nick) {
 		try {
-            ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT mail FROM gracz where nick = '"+gracz.nick+"';");
+            ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM gracz where nick = '"+nick+"';");
             
             data.next();
-            String mail = data.getString(1);
-            
+            String mail = data.getString("mail");
+    		return mail;
+    		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return mail;
+		return "";
+
 	}
 	
 	public static void clearGraczZalogowany() {

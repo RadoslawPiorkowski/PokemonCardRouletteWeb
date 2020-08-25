@@ -29,7 +29,7 @@ public class LogowanieController {
     	
     	if(gracz.czyGraczIstniejeWBazie(gracz) && gracz.czyHasloJestPoprawne(gracz)) {
     		GraczZalogowany.zaloguj(gracz);
-    		PosiadaneKarty.pobierzKartyGraczaZBazyDanych(gracz);
+    		PosiadaneKarty.pobierzKartyGraczaZBazyDanych();
     		return "home";
     	} else 
     		return "logowanie";

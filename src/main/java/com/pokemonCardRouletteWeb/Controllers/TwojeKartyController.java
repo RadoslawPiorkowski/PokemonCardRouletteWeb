@@ -18,8 +18,11 @@ public class TwojeKartyController {
     	
     	if(GraczZalogowany.nick.equals(""))
     		return "redirect:/logowanie";
-    	
+
+    	PosiadaneKarty.pobierzKartyGraczaZBazyDanych();
     	model.addAttribute("listaKart", PosiadaneKarty.getListaKart());
+    	System.out.println(GraczZalogowany.id);
+    	System.out.println("dupa");
         return "karty";
     }
     
