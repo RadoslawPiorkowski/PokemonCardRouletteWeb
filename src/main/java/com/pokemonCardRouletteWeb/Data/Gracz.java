@@ -1,17 +1,32 @@
 package com.pokemonCardRouletteWeb.Data;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.pokemonCardRouletteWeb.BazaDanych;
+
 public class Gracz {
 	
-	public static int id = 2;
-	public static String nick = "Ash";
-	public static String mail;
+	public  int id;
+	public  String nick;
+	public  String mail;
+	public  String haslo;
 	
 	
-	public Gracz(int id, String nick, String mail) {
-		Gracz.id = id;
-		Gracz.nick = nick;
-		Gracz.mail = mail;
+	
+	
+	public Gracz() {
 	}
+
+
+	public Gracz(int id, String nick, String mail, String haslo) {
+		this.id = id;
+		this.nick = nick;
+		this.mail = mail;
+		this.haslo = haslo;
+	}
+
+
 
 
 	public int getId() {
@@ -44,6 +59,57 @@ public class Gracz {
 	}
 	
 	
+	public String getHaslo() {
+		return haslo;
+	}
+
+
+	public void setHaslo(String haslo) {
+		this.haslo = haslo;
+	}
+
+
+	public boolean czyDaneNieSaZajete(Gracz gracz) throws SQLException {
+		ResultSet sprNick = BazaDanych.getStatmentBD().executeQuery("SELECT COUNT (nick) FROM gracz where nick = '"+gracz.nick+"';");
+		ResultSet sprMail = BazaDanych.getStatmentBD().executeQuery("SELECT COUNT (mail) FROM gracz where mail = '"+gracz.mail+"';");
+
+		sprNick.next();
+		sprMail.next();
+		
+		if(sprNick.getInt(1) > 0)
+			return false;
+		else if (sprMail.getInt(1) > 0)
+			return false;
+		else
+			return true;
+	}
 	
+	
+	public boolean czyDaneSaPoprawne(Gracz gracz) {
+
+		if(gracz.nick.length() > 25 || gracz.nick.length() < 4)
+			return false;
+		else if (gracz.mail.length() > 40 || gracz.mail.length() < 6)
+			return false;
+		else if (gracz.haslo.length() < 2)
+			return false;
+		else 
+			return true;
+		
+	}
+	
+	
+	public static void rejestracjaGracza(Gracz gracz) throws SQLException {
+		
+            try {
+                BazaDanych.getStatmentBD().execute("INSERT INTO Gracz (Nick, mail, haslo) VALUES " +
+                        "('" + gracz.nick + "', '" + gracz.mail + "', '" + gracz.haslo + "');");
+                
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            
+        }
+	}
 
 }

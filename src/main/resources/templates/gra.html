@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+  <body>
+  
+    <input type="button" id="timeToGo" value="1000 * 60 * 60 * 24">
 
-</body>
+	<p>Click the button to get the time of the time field.</p>
+
+	<button onclick="myFunction()">Try it</button>
+  
+    <div id="countdown"></div>
+    
+    
+    <script>
+    
+	var timeToGo;
+
+    function myFunction() {
+        timeToGo = document.getElementById("myTime").value;
+    }
+	
+
+      function countdownTimer() {
+    	  
+
+    	
+        const difference = +new Date().getTime() - +(timeToGo);
+        let remaining = "Time's up!";
+
+        if (difference > 0) {
+          const parts = {
+            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((difference / 1000 / 60) % 60),
+            seconds: Math.floor((difference / 1000) % 60)
+          };
+
+          remaining = Object.keys(parts)
+            .map(part => {
+              if (!parts[part]) return;
+              return `${parts[part]} ${part}`;
+            })
+            .join(" ");
+        }
+
+        document.getElementById("countdown").innerHTML = remaining;
+      }
+
+      countdownTimer();
+      setInterval(countdownTimer, 1000);
+    </script>
+  </body>
 </html>

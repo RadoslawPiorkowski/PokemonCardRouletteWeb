@@ -139,6 +139,9 @@ li a:hover:not(.active) {
     text-align: center;
 }
 
+
+
+
 /* Login button */
 
 .loginButton {
@@ -156,3 +159,79 @@ li a:hover:not(.active) {
   top: 8px;
   right: 50px;
 }
+
+/* Text colors */
+
+.uncommon {
+  color: green;
+}
+
+.rare {
+  color: blue;
+}
+
+.legendary {
+  color: orange;
+}
+
+.mythic {
+  color: purple;
+}
+
+/* Gallery */
+
+div.gallery {
+  margin: 1px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: 250px;
+}
+
+div.desc {
+  padding: 1px;
+  text-align: center;
+} 
+
+/* */
+div.gallery2 {
+  margin: 25px;
+  float: left;
+  width: 300px;
+}
+
+div.gallery2:hover {
+  border: 1px solid #777;
+}
+
+div.gallery2 img {
+  width: 100%;
+  height: auto;
+}
+
+/* */
+div.gallery3 {
+  margin: 160px;
+  float: left;
+  width: 300px;
+
+}
+
+div.gallery3:hover {
+  border: 1px solid #777;
+}
+
+div.gallery3 img {
+  width: 100%;
+  height: auto;
+}
+
+

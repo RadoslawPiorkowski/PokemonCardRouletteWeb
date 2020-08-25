@@ -1,10 +1,120 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<link rel = "stylesheet" type="text/css" href = "style.css">
+	<meta charset="UTF-8">
+
+
+<title>Card of the day</title>
+
+
+<style>
+
+
+.left {
+  max-width: 20%;
+  height: auto;
+}
+
+
+
+h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 0px;
+}
+
+
+</style>
+
 </head>
 <body>
+
+
+<div style = "float:right">
+	<a class="loginButton" href="logowanie">
+        <img border="0" alt="login" src="https://cdn.onlinewebfonts.com/svg/img_311846.png" style="width:45px;height:45px;">
+    </a>
+</div>
+
+
+<p>
+    <a href="home">
+        <img border="0" alt="logo" src="https://fontmeme.com/permalink/200805/407a4c726448aed2f163b1ba6202957f.png" >
+    </a>
+</p>
+
+
+<div class = "navbar">
+        <a href='gra'><span>Play</span></a>
+        <a href='zasady'><span>Game rules</span></a>
+        <a href='kartaDnia'><span>Card of the day</span></a>
+        <a href='karty'><span>Your cards</span></a>
+        <a href='zdobadzKarty'><span>Get cards</span></a>
+        <a href='kontakt'><span>Contact</span></a>
+</div>
+
+<div style = text-align:center>
+	<p>
+		Hey! I am <b>Nurse Joy</b> You look like you need help. You can visit me every day and I will give you one card. Have fun. <br>
+		Here is a timer to tell you when you can get another card.
+	</p>
+</div>
+
+<h2 id="demo"></h2>
+
+<script>
+// Set the date we're counting down to
+
+var timeToGo = 1000 * 60 * 60 * 24;
+	
+var countDownDate = new Date().getTime() + (timeToGo);
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "You can take free card!";
+
+  }
+}, 1000);
+</script>
+
+
+ <img class="left" src="https://www.nicepng.com/png/full/356-3562868_they-will-be-starting-at-4-8-pm.png" alt="Nurse Joy" style="float:left; margin-right:260px" width="300" height="300">
+
+
+ <div class="gallery3">
+  <a target="_blank" href="img_5terre.jpg">
+    <img src="https://pm1.narvii.com/6295/5b085cbc5a3e6437f3f86538c1ff1f201a0695a9_hq.jpg" alt="Card">
+  </a>
+  <div class="desc"> <b>Free card</b></div>
+</div>
+
+
+
+<div class = "footer">
+	<p>While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy. Copyright 2020. All Rights Reserved.
+	<br>Maciej & Radek Company 2020</p>
+</div>
 
 </body>
 </html>

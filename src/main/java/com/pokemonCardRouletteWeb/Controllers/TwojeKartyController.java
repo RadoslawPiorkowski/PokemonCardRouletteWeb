@@ -14,8 +14,9 @@ public class TwojeKartyController {
 	
     @GetMapping("/karty")
     public String stronaMoichKart(Model model) {
+    	model.addAttribute("gracz", new Gracz());
     	
-    	if(Gracz.nick.equals(""))
+    	if(gracz.nick.equals(""))
     		return "redirect:/logowanie";
     	
     	model.addAttribute("listaKart", PosiadaneKarty.getListaKart());
