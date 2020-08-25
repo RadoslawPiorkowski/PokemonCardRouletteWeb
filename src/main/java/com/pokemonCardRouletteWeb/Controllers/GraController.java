@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.pokemonCardRouletteWeb.Data.Gracz;
+import com.pokemonCardRouletteWeb.Data.GraczZalogowany;
 
 
 @Controller
@@ -16,7 +17,7 @@ public class GraController {
     public String stronaGry(Model model) {
     	model.addAttribute("gracz", new Gracz());
     	
-    	if(gracz.nick.equals(""))
+    	if(GraczZalogowany.nick.equals(""))
     		return "redirect:/logowanie";
     	
         return "gra";

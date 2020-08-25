@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel = "stylesheet" href = "login.css">
     <meta charset="UTF-8">
@@ -19,19 +19,19 @@
     </a>
 </p>
 
-<div class="registration-form">
-    <form>
+<div class="registration-form" id="sign">
+    <form th:action="@{/logowanie}" th:object="${graczZalogowany}" method="post" >
         <div class="form-icon">
             <span><i class="icon icon-user"></i></span>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control item" id="username" placeholder="Username">
+            <input type="text" class="form-control item" id="username" placeholder="Username" th:field="${graczZalogowany.nick}">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control item" id="password" placeholder="Password">
+            <input type="password" class="form-control item" id="password" placeholder="Password" th:field="${graczZalogowany.haslo}">
         </div>
         <div class="form-group">
-            <button type="button" class="btn btn-block create-account">Login</button>
+            <button type="submit" class="btn btn-block create-account">Login</button>
         </div>
         <div class="form-group">
             <a class="loginButton" href="rejestracja">

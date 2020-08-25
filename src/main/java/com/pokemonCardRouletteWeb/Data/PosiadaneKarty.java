@@ -14,13 +14,6 @@ public class PosiadaneKarty{
 	public static ArrayList<Karta> listaKart = new ArrayList<Karta>();
 	
 
-	static {
-		wyczyscListeKart();
-		pobierzKartyGraczaZBazyDanych(null);
-   
-	}
-	
-
 	
     
     public static Karta getKartaPoID(int kartaId) throws SQLException {
@@ -36,9 +29,12 @@ public class PosiadaneKarty{
 		return listaKart;
 	}
 	
+	
+
 
 	public static void pobierzKartyGraczaZBazyDanych(Gracz gracz) {
-        try {
+
+		try {
 
             ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM Gracz_Karta");
             

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.pokemonCardRouletteWeb.Data.Gracz;
+import com.pokemonCardRouletteWeb.Data.GraczZalogowany;
 
 @Controller
 public class KartaDniaController {
@@ -12,7 +13,7 @@ public class KartaDniaController {
     @GetMapping("/kartaDnia")
     public String stronaKartyDnia() {
     	
-    	if(Gracz.nick.equals(""))
+    	if(GraczZalogowany.nick.equals(""))
     		return "redirect:/logowanie";
     	
         return "kartaDnia";

@@ -104,12 +104,32 @@ public class Gracz {
             try {
                 BazaDanych.getStatmentBD().execute("INSERT INTO Gracz (Nick, mail, haslo) VALUES " +
                         "('" + gracz.nick + "', '" + gracz.mail + "', '" + gracz.haslo + "');");
-                
 
             } catch (SQLException e) {
-                e.printStackTrace();
-            
-        }
+                e.printStackTrace();  
+            }
 	}
 
+	
+	public boolean czyGraczIstniejeWBazie(Gracz gracz) throws SQLException {
+		ResultSet sprNick = BazaDanych.getStatmentBD().executeQuery("SELECT COUNT (nick) FROM gracz where nick = '"+gracz.nick+"';");
+
+		sprNick.next();
+		
+		if(sprNick.getInt(1) != 1)
+			return false;
+		else
+			return true;
+	}
+	
+	public boolean czyHasloJestPoprawne(Gracz gracz) throws SQLException {
+        ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT haslo FROM gracz where nick = '"+gracz.nick+"';");
+
+		data.next();
+		
+		if(!data.getString(1).equals(gracz.haslo))
+			return false;
+		else
+			return true;
+	}
 }
