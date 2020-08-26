@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel = "stylesheet" type="text/css" href = "style.css">
+<meta charset="UTF-8">
+<title>Cards</title>
+
+<style>
+
+
+
+</style>
+
+</head>
+
+<div style = "float:right">
+    <a class="loginButton" href="logowanie">
+        <img border="0" alt="login" src="https://cdn.onlinewebfonts.com/svg/img_311846.png" style="width:45px;height:45px;">
+    </a>
+</div>
+
+
+<p>
+    <a href="home">
+        <img border="0" alt="logo" src="https://fontmeme.com/permalink/200805/407a4c726448aed2f163b1ba6202957f.png" >
+    </a>
+</p>
+
+
+<div class = "navbar">
+        <a href='gra'><span>Play</span></a>
+        <a href='zasady'><span>Game rules</span></a>
+        <a href='kartaDnia'><span>Card of the day</span></a>
+        <a href='karty'><span>Your cards</span></a>
+        <a href='zdobadzKarty'><span>Get cards</span></a>
+        <a href='kontakt'><span>Contact</span></a>
+
+</div>
+
+<div style = text-align:center>
+<p>You have successfully purchased a card pack! <br>
+ The <b>3 Pokemon cards</b> in it have been added to your collection!</p>
+</div>
+
+
+
+<div class="gallery1-1" th:each="karta : ${listaKartNowych}">
+	<img alt="missing image" th:src="${karta.getGrafika()}" >
+	<td th:switch="${karta.getRzadkosc()}">
+		<b><center><p th:case="'common'" style="color:black" th:text="${karta.getNazwa()}"></p></center>
+		<center><p th:case="'uncommon'"  style="color:green" th:text="${karta.getNazwa()}"></p></center>
+		<center><p th:case="'rare'" style="color:blue" th:text="${karta.getNazwa()}"></p></center>
+		<center><p th:case="'legendary'"  style="color:orange" th:text="${karta.getNazwa()}"></p></center>
+		<center><p th:case="'mythic'"  style="color:purple" th:text="${karta.getNazwa()}"></p></center>
+		<center><p th:case="*" th:text="${karta.getNazwa()}"></p></center></b>
+	</td>
+	<!--  <center><b><p style="color:red" th:text="${karta.getNazwa()}"></p></b></center>  -->
+</div>
+
+
+<div class = "footer">
+	<p>While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy. Copyright 2020. All Rights Reserved.
+	<br>Maciej & Radek Company 2020</p>
+</div>
+
+
+
+</html>

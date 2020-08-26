@@ -1,6 +1,7 @@
 package com.pokemonCardRouletteWeb.Data;
 
 import java.sql.ResultSet;
+import java.util.Date;
 
 import com.pokemonCardRouletteWeb.BazaDanych;
 
@@ -10,16 +11,21 @@ public class GraczZalogowany {
 	public static String nick = "";
 	public static String mail = "";
 	public static String haslo = "";
-	
-	
+	public static Date dataFree;
+	public static boolean czyOdebrano;
 	
 	public static void zaloguj(Gracz gracz) {
 		GraczZalogowany.nick = gracz.nick;
 		GraczZalogowany.id = getIdFromDB(gracz.nick);
 		GraczZalogowany.mail = getMailFromDB(gracz.nick);
+		GraczZalogowany.dataFree = getFreeFromDB(nick);
+		czyOdebranoFreeKarte();
+		
+		
 	}
 	
-	
+
+
 
 	public static int getId() {
 		return id;
@@ -84,9 +90,53 @@ public class GraczZalogowany {
 		}
 		
 		return "";
-
 	}
 	
+	
+	public static Date getFreeFromDB(String nick) {
+		try {
+            ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM gracz where nick = '"+nick+"';");
+            
+            data.next();
+            Date mail = data.getDate("free");
+    		return mail;
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return new Date();
+	}
+	
+	
+	@SuppressWarnings("deprecation")
+	public static void czyOdebranoFreeKarte() {
+		Date dzis = new Date();
+		Date ostatnio = dataFree;
+		
+		if(dzis.getDay() == ostatnio.getDay()) 
+			czyOdebrano = true;
+		else
+			czyOdebrano = false;	
+	}
+	
+	
+	
+	
+	public static boolean getCzyOdebrano() {
+		return czyOdebrano;
+	}
+
+
+
+
+	public static void setCzyOdebrano(boolean czyOdebrano) {
+		GraczZalogowany.czyOdebrano = czyOdebrano;
+	}
+
+
+
+
 	public static void clearGraczZalogowany() {
 		id = 0;
 		nick = "";

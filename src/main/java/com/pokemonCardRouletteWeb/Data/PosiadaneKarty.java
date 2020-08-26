@@ -12,7 +12,8 @@ public class PosiadaneKarty{
 	
 
 	public static ArrayList<Karta> listaKart = new ArrayList<Karta>();
-	
+	public static ArrayList<Karta> listaKartNowych = new ArrayList<Karta>();
+
 
 	
     
@@ -23,12 +24,6 @@ public class PosiadaneKarty{
     	return new Karta(kartaId, data.getString("nazwa"), data.getString("rzadkosc"), data.getString("grafika"));
     }
 
-
-
-	public static ArrayList<Karta> getListaKart() {
-		return listaKart;
-	}
-	
 	
 
 
@@ -51,13 +46,53 @@ public class PosiadaneKarty{
         }
 	}
 
+
 	
+	public static void zdobadzKarty(int ilosc) {
+
+		wyczyscListeKartNowych();
+		
+		try {
+            ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT COUNT (karta) FROM Karta");
+            data.next();
+            
+            int liczbaKart = data.getInt("count") - 1;
+            
+            for(int i = 0; i < ilosc; i++) {
+            	
+            	int losowaKarta = (int)( Math.random() * liczbaKart) + 1;
+            	
+                BazaDanych.getStatmentBD().execute("INSERT INTO gracz_karta (gracz_id, karta_id) VALUES " +
+                        "('" + GraczZalogowany.id + "', '" + losowaKarta + "');");
+                
+                listaKartNowych.add(getKartaPoID(losowaKarta));
+            
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+	}
     
 	
 	public static void wyczyscListeKart() {
 		listaKart.clear();
 	}
     
+	public static void wyczyscListeKartNowych() {
+		listaKartNowych.clear();
+	}
+
+
+	
+	public static ArrayList<Karta> getListaKart() {
+		return listaKart;
+	}
+	
+
+	public static ArrayList<Karta> getListaKartNowych() {
+		return listaKartNowych;
+	}
     
     
 }

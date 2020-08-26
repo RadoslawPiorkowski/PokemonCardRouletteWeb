@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<link rel = "stylesheet" type="text/css" href = "style.css">
 	<meta charset="UTF-8">
@@ -56,26 +56,28 @@ h2 {
 
 <div style = text-align:center>
 	<p>
-		Hey! I am <b>Nurse Joy</b> You look like you need help. You can visit me every day and I will give you one card. Have fun. <br>
-		Here is a timer to tell you when you can get another card.
+		Please here is a card for you, hope you like it. Come back to me tomorrow and I'll give you another one
 	</p>
 </div>
 
 
-<img class="left" src="https://www.nicepng.com/png/full/356-3562868_they-will-be-starting-at-4-8-pm.png" alt="Nurse Joy" style="float:left; margin-right:260px" width="300" height="300">
+<img class="left" src="https://www.nicepng.com/png/full/356-3562868_they-will-be-starting-at-4-8-pm.png" alt="Nurse Joy" style="float:left; margin-right:400px" width="300" height="300">
 
 
-<div class="gallery3">
-		<a href="otrzymanaKarta">
-		<img src="https://pm1.narvii.com/6295/5b085cbc5a3e6437f3f86538c1ff1f201a0695a9_hq.jpg" alt="Card">
-		</a>
-		<div class="desc"> <b>Free card</b></div>
+<div class="gallery1-1" th:each="karta : ${listaKartNowych}">
+	<img alt="missing image" th:src="${karta.getGrafika()}" >
+	<td th:switch="${karta.getRzadkosc()}">
+		<b><center><p th:case="'common'" style="color:black" th:text="${karta.getNazwa()}"></p></center>
+		<center><p th:case="'uncommon'"  style="color:green" th:text="${karta.getNazwa()}"></p></center>
+		<center><p th:case="'rare'" style="color:blue" th:text="${karta.getNazwa()}"></p></center>
+		<center><p th:case="'legendary'"  style="color:orange" th:text="${karta.getNazwa()}"></p></center>
+		<center><p th:case="'mythic'"  style="color:purple" th:text="${karta.getNazwa()}"></p></center>
+		<center><p th:case="*" th:text="${karta.getNazwa()}"></p></center></b>
+	</td>
+	<!--  <center><b><p style="color:red" th:text="${karta.getNazwa()}"></p></b></center>  -->
 </div>
-		
 
-
-
-
+	
 
 
 

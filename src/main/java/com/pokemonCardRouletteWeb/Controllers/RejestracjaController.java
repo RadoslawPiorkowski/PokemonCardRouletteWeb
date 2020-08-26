@@ -26,7 +26,7 @@ public class RejestracjaController {
     	
     	if(gracz.czyDaneNieSaZajete(gracz) && gracz.czyDaneSaPoprawne(gracz)) {
     		Gracz.rejestracjaGracza(gracz);
-    		return "logowanie";
+    		return "home";
     	} else 
     		return "rejestracjaError";
     	

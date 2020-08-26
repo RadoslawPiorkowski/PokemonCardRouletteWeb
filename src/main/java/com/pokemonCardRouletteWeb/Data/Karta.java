@@ -59,6 +59,12 @@ public class Karta implements Serializable {
 	public void setGrafika(String grafika) {
 		this.grafika = grafika;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Karta: id = " + id + ", nazwa=" + nazwa + ", rzadkosc=" + rzadkosc;
+	}
 	
 	
 	

@@ -2,6 +2,7 @@ package com.pokemonCardRouletteWeb.Data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import com.pokemonCardRouletteWeb.BazaDanych;
 
@@ -11,7 +12,6 @@ public class Gracz {
 	public  String nick;
 	public  String mail;
 	public  String haslo;
-	
 	
 	
 	
@@ -108,6 +108,21 @@ public class Gracz {
             } catch (SQLException e) {
                 e.printStackTrace();  
             }
+	}
+	
+	
+	public static void updateDate() {
+
+		Date dzis = new Date();
+		
+        try {
+            BazaDanych.getStatmentBD().execute("UPDATE GRACZ SET free='" + dzis + "' WHERE nick ='" + GraczZalogowany.nick + "';");  
+            GraczZalogowany.dataFree = dzis;
+            GraczZalogowany.czyOdebranoFreeKarte();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();  
+        }
 	}
 
 	

@@ -16,9 +16,7 @@ public class HomeController {
 	
     @GetMapping("/home")
     public String stronaGlowna() {
-    	System.out.println(GraczZalogowany.id);
-    	System.out.println(GraczZalogowany.mail);
-    	System.out.println(GraczZalogowany.nick);
+    	System.out.println(GraczZalogowany.czyOdebrano);
         return "home";
     }
 	
