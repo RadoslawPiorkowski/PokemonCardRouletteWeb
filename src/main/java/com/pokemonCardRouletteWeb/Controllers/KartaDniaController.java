@@ -30,11 +30,16 @@ public class KartaDniaController {
     	if(GraczZalogowany.nick.equals(""))
     		return "redirect:/logowanie";
     	
-    	PosiadaneKarty.zdobadzKarty(1);
-    	Gracz.updateDate();
-    	model.addAttribute("listaKartNowych", PosiadaneKarty.getListaKartNowych());
-    	
-        return "otrzymanaKarta";
+    	if(GraczZalogowany.czyOdebrano == false) {
+        	PosiadaneKarty.zdobadzKarty(1);
+        	Gracz.updateDate();
+        	model.addAttribute("listaKartNowych", PosiadaneKarty.getListaKartNowych());
+        	
+            return "otrzymanaKarta";
+    	}
+
+    	return "home";
+    	//erro page
     }
     
 }
