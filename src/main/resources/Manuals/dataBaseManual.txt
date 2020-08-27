@@ -1,11 +1,27 @@
-make database: "pokemon" <--- !!!
-change password in "/PokemonCardRouletteWeb/src/main/java/com/pokemonCardRouletteWeb/BazaDanych.java"
+make database: "pokemon"
 
+!!! For better working application you have to change postgres max connections!!!
+
+Find "postgresql.conf" and change in it "max_connections" to around 700
+You can also change "shared_buffers" to 5000MB - 7000MB to make it working faster with large amount of cards	
+Later you have to restart your server, for WINDOWS:
+1-Open Run Window by Winkey + R
+2-Type services.msc
+3-Search Postgres service based on version installed.
+4-Click stop, start or restart the service option.
+
+For macOS:
+1-On the top left of the menu bar you have the Postgres Icon
+2-Click on it this opens a drop down menu
+3-Click on Stop -> than click on start
+
+Execute in query tool:
 Create table GRACZ(
 	ID_GRACZ SERIAL,
 	NICK varchar (25),
 	MAIL varchar(40),
 	HASLO varchar(20),
+	FREE DATE NOT NULL DEFAULT '2020-08-08',
 	PRIMARY KEY(ID_Gracz)
 );
 
@@ -27,7 +43,13 @@ CREATE TABLE GRACZ_KARTA(
 	FOREIGN KEY (KARTA_ID) REFERENCES KARTA (ID_KARTA)
 );
 
-
+Create table WIADOMOSC(
+	IMIE varchar (30),
+	MAIL varchar(40),
+	NUMER varchar(20),
+	TEMAT varchar(60),
+	TEKST varchar(2000)
+);
 
 INSERT INTO KARTA(ID_KARTA, NAZWA, RZADKOSC, GRAFIKA) VALUES
 (1, 'Bulbasaur', 'common', 'https://pkmncards.com/wp-content/uploads/bulbasaur-base-set-2-b2-67.jpg'),
@@ -159,7 +181,7 @@ INSERT INTO KARTA(ID_KARTA, NAZWA, RZADKOSC, GRAFIKA) VALUES
 (127, 'Pinsir', 'uncommon', 'https://pkmncards.com/wp-content/uploads/pinsir-base-set-2-b2-29.jpg'),
 (128, 'Tauros', 'uncommon', 'https://pkmncards.com/wp-content/uploads/tauros-base-set-2-b2-62.jpg'),
 (129, 'Magikarp', 'common', 'https://pkmncards.com/wp-content/uploads/magikarp-base-set-2-b2-50.jpg'),
-(130, 'Gyarados', 'legendary', 'https://pkmncards.com/wp-content/uploads/gyarados-base-set-2-b2-7.jpg').
+(130, 'Gyarados', 'legendary', 'https://pkmncards.com/wp-content/uploads/gyarados-base-set-2-b2-7.jpg'),
 (131, 'Lapras', 'rare', 'https://pkmncards.com/wp-content/uploads/lapras-fossil-fo-10.jpg'),
 (132, 'Ditto', 'legendary', 'https://pkmncards.com/wp-content/uploads/ditto-fossil-fo-3.jpg'),
 (133, 'Eevee', 'uncommon', 'https://pkmncards.com/wp-content/uploads/en_US-TK9B-004-eevee.jpg'),

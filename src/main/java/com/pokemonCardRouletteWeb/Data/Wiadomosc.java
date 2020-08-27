@@ -89,15 +89,31 @@ public class Wiadomosc {
 	public static ArrayList<Wiadomosc> getListaWiadomosci() {
 		return listaWiadomosci;
 	}
+	
+	public static void pobierzWiadomosci() {
+		wyczyscListeWiadomosci();
+        try {
+            ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM wiadomosc");
 
+            while (data.next())
+            	listaWiadomosci.add(new Wiadomosc(data.getString("Imie"), data.getString("mail"), data.getString("numer"), data.getString("temat"), data.getString("tekst")));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+	}
 
+	public static void wyczyscListeWiadomosci() {
+		listaWiadomosci.clear();
+	}
+
+	
 	@Override
 	public String toString() {
 		return "Message from: "+ name +
-				"\n, Mail: " + mail + 
-				"\n, Number: " + number + 
-				"\n, Subject:" + subject + 
-				"\n\n"+ text + 
+				"\nMail: " + mail + 
+				"\nNumber: " + number + 
+				"\nSubject:" + subject + 
+				"\n"+ text + 
 				"\n\n";
 	}
 

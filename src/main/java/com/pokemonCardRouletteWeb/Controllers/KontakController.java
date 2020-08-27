@@ -26,7 +26,7 @@ public class KontakController {
     public String getWiadomosc(@ModelAttribute Wiadomosc wiadomosc) {
     	
 		if(!wiadomosc.getName().isEmpty() && !wiadomosc.getMail().isEmpty() && !wiadomosc.getSubject().isEmpty() && !wiadomosc.getText().isEmpty() && !wiadomosc.getNumber().isEmpty()) {
-			Wiadomosc.listaWiadomosci.add(wiadomosc);
+
 			 try {
 				 BazaDanych.getStatmentBD().execute("INSERT INTO wiadomosc (imie, mail, numer, temat, tekst) VALUES "+ "('" + wiadomosc.getName() + "' , '" + wiadomosc.getMail() + "' , '" + wiadomosc.getNumber() + "' , '" + wiadomosc.getSubject() + "' , '" + wiadomosc.getText() + "');");
              } catch (SQLException e) {
