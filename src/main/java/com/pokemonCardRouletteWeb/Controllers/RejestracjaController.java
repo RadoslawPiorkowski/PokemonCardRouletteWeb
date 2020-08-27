@@ -1,14 +1,13 @@
 package com.pokemonCardRouletteWeb.Controllers;
 
-import java.sql.SQLException;
-
+import com.pokemonCardRouletteWeb.Data.Gracz;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.pokemonCardRouletteWeb.Data.Gracz;
+import java.sql.SQLException;
 
 @Controller
 public class RejestracjaController {
@@ -26,7 +25,7 @@ public class RejestracjaController {
     	
     	if(gracz.czyDaneNieSaZajete(gracz) && gracz.czyDaneSaPoprawne(gracz)) {
     		Gracz.rejestracjaGracza(gracz);
-    		return "home";
+    		return "homeRejestracja";
     	} else 
     		return "rejestracjaError";
     	
