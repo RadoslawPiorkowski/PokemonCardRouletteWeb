@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel = "stylesheet" type="text/css" href = "contact.css">
     <meta charset="UTF-8">
@@ -40,26 +40,21 @@
             <path d="M70.865,101.78c0,4.774,3.886,8.657,8.66,8.657c4.774,0,8.657-3.883,8.657-8.657c0-4.773-3.883-8.656-8.657-8.656    C74.751,93.124,70.865,97.006,70.865,101.78z"></path>
         </svg>
     </div>
-    <form action="#" method="post" id="contact_form">
+    <form action="#" th:action="@{/kontakt}" method="post" id="contact_form">
         <div class="name">
-            <input type="text" placeholder="My name is"  id="name_input" required>
+            <input type="text" th:field="${wiadomosc.name}" placeholder="My name is"  id="name_input" required>
         </div>
         <div class="email">
-            <input type="email" placeholder="My e-mail is" name="email" id="email_input" required>
+            <input type="email" th:field="${wiadomosc.mail}" placeholder="My e-mail is" name="email" id="email_input" required>
         </div>
         <div class="telephone">
-            <input type="text" placeholder="My number is" name="telephone" id="telephone_input" required>
+            <input type="text" th:field="${wiadomosc.number}" placeholder="My number is" name="telephone" id="telephone_input" required>
         </div>
         <div class="subject">
-            <select placeholder="Subject line" name="subject" id="subject_input" required>
-                <option disabled hidden selected>Subject line</option>
-                <option>I'd like to pay more to get all cards</option>
-                <option>I'd like to report how awesome site you made</option>
-                <option>I'd like to make a proposal</option>
-            </select>
+             <input type="text" th:field="${wiadomosc.subject}" placeholder="My subject is" name="subject" id="subject_input" required>
         </div>
         <div class="message">
-            <textarea name="message" placeholder="Please write all the wishes" id="message_input" cols="30" rows="5" required></textarea>
+            <textarea name="message" th:field="${wiadomosc.text}" placeholder="Please write all the wishes" id="message_input" cols="30" rows="5" required></textarea>
         </div>
         <div class="submit">
             <input type="submit" value="Send Message" id="form_button" />
@@ -68,6 +63,11 @@
 </div><!-- // End #container -->
 
 
+<!-- <select th:field="${wiadomosc.subject}" placeholder="Subject line" name="subject" id="subject_input" required>
+     <option disabled hidden selected>Subject line</option>
+     <option>I'd like to pay more to get all cards</option>
+     <option>I'd like to report how awesome site you made</option>
+     <option>I'd like to make a proposal</option></select> -->
 
 <div class = "footer">
     <p>While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy. Copyright 2020. All Rights Reserved.</center>
