@@ -127,6 +127,83 @@ li a:hover:not(.active) {
   top: 10px;
 }
 
+/* Nurse Joy box */
+.box1-1 {
+  width: 600px;
+  margin: 50px auto;
+  border: 4px solid #00bfb6;
+  padding: 20px;
+  text-align: center;
+  position: absolute;
+  top: 200px;
+  left: 350px;
+}
+
+.sb7:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #00bfb6;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #00bfb6;
+  border-bottom: 10px solid transparent;
+  left: 20px;
+  bottom: -23px;
+}
+
+.sb7:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #fff;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #fff;
+  border-bottom: 10px solid transparent;
+  left: 24px;
+  bottom: -13px;
+}
+
+/*Giovvaini box */
+
+.box1-2 {
+  width: 600px;
+  margin: 50px auto;
+  border: 4px solid #4040bf;
+  padding: 20px;
+  text-align: center;
+  position: absolute;
+  top: 200px;
+  left: 350px;
+}
+
+.sb7-1:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #4040bf;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #4040bf;
+  border-bottom: 10px solid transparent;
+  left: 20px;
+  bottom: -23px;
+}
+
+.sb7-1:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #fff;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #fff;
+  border-bottom: 10px solid transparent;
+  left: 24px;
+  bottom: -13px;
+}
+
 
 /* STOPKA */
 
@@ -206,7 +283,7 @@ div.desc {
 /* gallery buy card */
 
 div.gallery1-1 {
-  margin: 40px;
+  margin: 50px;
   border: 1px solid #ccc;
   float: left;
   width: 180px;
