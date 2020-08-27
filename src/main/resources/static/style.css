@@ -160,6 +160,7 @@ li a:hover:not(.active) {
   right: 50px;
 }
 
+
 /* Text colors */
 
 .uncommon {
@@ -253,4 +254,16 @@ div.gallery3 img {
   height: auto;
 }
 
+/* Panel button */
 
+.create-account{
+    border-radius: 30px;
+    padding: 10px 20px;
+      font-family: VT323;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #5791ff;
+    border: none;
+    color: white;
+    margin-top: 20px;
+}

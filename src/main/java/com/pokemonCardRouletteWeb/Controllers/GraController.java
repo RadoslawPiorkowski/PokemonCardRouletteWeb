@@ -20,7 +20,7 @@ public class GraController {
     	if(GraczZalogowany.nick.equals(""))
     		return "redirect:/logowanie";
     	
-        return "gra";
+        return "logowanie";
     }
 	
 }

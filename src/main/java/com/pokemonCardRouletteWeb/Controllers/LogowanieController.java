@@ -1,16 +1,14 @@
 package com.pokemonCardRouletteWeb.Controllers;
 
-import java.sql.SQLException;
-
+import com.pokemonCardRouletteWeb.Data.Gracz;
+import com.pokemonCardRouletteWeb.Data.GraczZalogowany;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.pokemonCardRouletteWeb.Data.Gracz;
-import com.pokemonCardRouletteWeb.Data.GraczZalogowany;
-import com.pokemonCardRouletteWeb.Data.PosiadaneKarty;
+import java.sql.SQLException;
 
 @Controller
 public class LogowanieController {
@@ -20,7 +18,13 @@ public class LogowanieController {
     @GetMapping("/logowanie")
     public String stronaLogowania(Model model) {
     	model.addAttribute("graczZalogowany", new Gracz());
-        return "logowanie";
+
+    	if(GraczZalogowany.id == 1){
+    	    return "paneladmin";
+        } else if (GraczZalogowany.id > 1)
+            return "panelgracz";
+
+    	return "logowanie";
     }
     
     
