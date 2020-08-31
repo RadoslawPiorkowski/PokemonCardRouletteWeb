@@ -110,10 +110,10 @@ public class Gracz {
             }
 	}
 
-	public static void zmianahasla(Gracz gracz) throws SQLException {
+	public static void zmianahasla(Gracz gracz, String id) throws SQLException {
 
 		try {
-			BazaDanych.getStatmentBD().execute("UPDATE Gracz SET haslo = " + gracz.haslo + "WHERE ID_GRACZ = " + gracz.id + ";");
+			BazaDanych.getStatmentBD().execute("UPDATE Gracz SET haslo = '" + gracz.haslo + "'WHERE ID_GRACZ = '" + id + "';");
 
 		} catch (SQLException e) {
 			e.printStackTrace();

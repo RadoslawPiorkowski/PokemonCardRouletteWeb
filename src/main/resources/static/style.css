@@ -127,6 +127,49 @@ li a:hover:not(.active) {
   top: 10px;
 }
 
+/*Game tex box */ 
+
+.textBoxG {
+  width: 470px;
+  margin: 50px auto;
+  border: 4px solid #88f51b;
+  padding: 20px;
+  font-weight: 100;
+  font-size: 16px;
+  color: #000000;
+  font-family: VT323;
+  position: absolute;
+  top: 220px;
+  left: 880px;
+}
+
+
+.box1g:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #88f51b;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #88f51b;
+  border-bottom: 10px solid transparent;
+  right: -21px;
+  top: 6px;
+}
+
+.box1g:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 7px solid #fff;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #fff;
+  border-bottom: 7px solid transparent;
+  right: -11px;
+  top: 10px;
+}
+
 /* Nurse Joy box */
 .box1-1 {
   width: 600px;

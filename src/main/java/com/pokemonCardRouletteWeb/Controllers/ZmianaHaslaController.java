@@ -1,6 +1,8 @@
 package com.pokemonCardRouletteWeb.Controllers;
 
 import com.pokemonCardRouletteWeb.Data.Gracz;
+import com.pokemonCardRouletteWeb.Data.GraczZalogowany;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +25,8 @@ public class ZmianaHaslaController {
     @PostMapping(value = "/panelGracz")
     public String zmianaHasla(@ModelAttribute(name = "gracz7") Gracz gracz, Model model) throws SQLException {
         model.addAttribute("gracz7", new Gracz());
-        if(gracz.czyDaneSaPoprawne(gracz)) {
-            Gracz.zmianahasla(gracz);
+        if(gracz.haslo.length() > 2) {
+            Gracz.zmianahasla(gracz, GraczZalogowany.id + "");
             return "homeRejestracja";
         } else
             return "rejestracjaError";

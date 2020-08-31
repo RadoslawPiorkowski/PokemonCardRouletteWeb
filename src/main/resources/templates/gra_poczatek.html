@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<link rel = "stylesheet" type="text/css" href = "style.css">
 	
@@ -72,20 +72,24 @@ button{
 
 
 <div class="textBoxG box1g" style = text-align:center>
-		Welcome to Professor Oak's Casino!<br>
-		I'm here to make sure the game runs fairly and smoothly and to give you your winning cards!<br>
-		So how? Are you ready? <br> 
-		<b>Please come closer!</b>
+		There is with is <td th:switch="${wygrana.getRzadkosc()}">
+		<b><p th:case="'common'" style="color:black" th:text="${wygrana.getRzadkosc()}"></p>
+		<p th:case="'uncommon'"  style="color:green" th:text="${wygrana.getRzadkosc()}"></p>
+		<p th:case="'rare'" style="color:blue" th:text="${wygrana.getRzadkosc()}"></p>
+		<p th:case="'legendary'"  style="color:orange" th:text="${wygrana.getRzadkosc()}"></p>
+		<p th:case="'mythic'"  style="color:purple" th:text="${wygrana.getRzadkosc()}"></p>
+		<p th:case="*" th:text="${wygrana.getRzadkosc()}"></p></b>
+	</td>  card to be won in this hand<br>
+		You can make your bet or let me know if we are starting the draw!<br>
 		</div>
 <div>
   <img class="right" src="https://i.ibb.co/jZb0xW0/366-3663389-pokemon-battle-revolution-trainer-models-hd-png-download.png" alt="Croupier" style="float:right" width="300" height="300">
   <img class="right2" src="https://i.ibb.co/vJxBRzS/Przechwytywanie.png" alt="Ruleete" style="float:right" width="300" height="300">
-   <img class="left" src="https://vignette.wikia.nocookie.net/pokemon-ingame-reviews-is-this-pokemon-any-good/images/e/e2/Machamp.jpg/revision/latest/scale-to-width-down/340?cb=20200317164507" alt="Bodyguard" style="float:right" width="300" height="300">
 </div>
 
 <p style="clear:right"></p>
-<form action="http://localhost:8080/gra_poczatek">
-  <button type="submit" class="button button2">Start the game</button>
+<form action="http://localhost:8080/gra_losowanie">
+  <button type="submit" class="button button2">Let's spin!</button>
 </form>
 
 
