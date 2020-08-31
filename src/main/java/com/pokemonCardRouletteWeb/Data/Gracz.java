@@ -1,10 +1,10 @@
 package com.pokemonCardRouletteWeb.Data;
 
+import com.pokemonCardRouletteWeb.BazaDanych;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
-
-import com.pokemonCardRouletteWeb.BazaDanych;
 
 public class Gracz {
 	
@@ -108,6 +108,16 @@ public class Gracz {
             } catch (SQLException e) {
                 e.printStackTrace();  
             }
+	}
+
+	public static void zmianahasla(Gracz gracz) throws SQLException {
+
+		try {
+			BazaDanych.getStatmentBD().execute("UPDATE Gracz SET haslo = " + gracz.haslo + "WHERE ID_GRACZ = " + gracz.id + ";");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	

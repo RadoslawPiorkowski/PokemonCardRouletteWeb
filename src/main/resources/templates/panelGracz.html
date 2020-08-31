@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel = "stylesheet" type="text/css" href = "style.css">
     <meta charset="UTF-8">
@@ -36,7 +36,7 @@
 <br>
 <br>
 
-<form style = text-align:left>
+<form th:action="@{/panelGracz}" th:object="${gracz7}" method="post" style = text-align:left >
     <div class="heading" style = text-align:center>
         <b><big id="emailHelp1" class="heading">Do not share your email with other trainers.</big></b>
     </div>
@@ -46,10 +46,12 @@
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"><br><br>
         <b><small id="emailHelp" class="form-text text-muted">Please repeat you password.</small></b><br>
         <label for="exampleInputPassword1">New Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+        <input type="password" class="form-control item" id="password" placeholder="Password" th:field="${gracz7.haslo}">
+
     </div><br>
     <button type="button" class="button button2">Change your password</button>
 </form>
+</div>
 
 <form style = text-align:left>
     <div class="heading" style = text-align:center>
