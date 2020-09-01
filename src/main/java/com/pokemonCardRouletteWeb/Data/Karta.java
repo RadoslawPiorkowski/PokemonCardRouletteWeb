@@ -13,6 +13,10 @@ public class Karta implements Serializable {
 	String grafika;
 	
 	
+	public Karta() {
+		
+	}
+	
 	public Karta(int id, String nazwa, String rzadkosc, String grafika) {
 		this.id = id;
 		this.nazwa = nazwa;
@@ -63,7 +67,7 @@ public class Karta implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Karta: id = " + id + ", nazwa=" + nazwa + ", rzadkosc=" + rzadkosc;
+		return  id + "# " + nazwa + " - " + rzadkosc + " card";
 	}
 	
 	

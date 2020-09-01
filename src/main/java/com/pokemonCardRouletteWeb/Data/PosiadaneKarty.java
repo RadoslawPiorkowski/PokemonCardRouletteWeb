@@ -26,12 +26,13 @@ public class PosiadaneKarty{
 
 	
     public static Karta getKartaPoNazwie(String nazwa) throws SQLException {
-    	ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM Karta where nazwa =" + nazwa +"");
+    	ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM Karta where nazwa ='" + nazwa +"'");
     	data.next();
     	
-    	return new Karta(data.getInt("id_Karta"), nazwa, data.getString("rzadkosc"), data.getString("grafika"));
+    	return new Karta(data.getInt("id_Karta"), data.getString("nazwa"), data.getString("rzadkosc"), data.getString("grafika"));
     }
 
+    
 	public static void pobierzKartyGraczaZBazyDanych() {
 
 		wyczyscListeKart();

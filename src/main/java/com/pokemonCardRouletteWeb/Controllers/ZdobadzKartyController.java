@@ -19,7 +19,7 @@ public class ZdobadzKartyController {
     		return "redirect:/logowanie";
     	
     	PosiadaneKarty.pobierzKartyGraczaZBazyDanych();
-    	
+
     	if(PosiadaneKarty.listaKart.size() <= 1)
     		return "pierwszyPakiet";
     	

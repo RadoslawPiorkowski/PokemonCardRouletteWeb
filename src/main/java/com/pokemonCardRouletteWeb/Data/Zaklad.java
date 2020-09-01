@@ -5,17 +5,20 @@ import java.util.ArrayList;
 
 public class Zaklad {
 	
-	public static Karta kartaDoWygrania;
+	public static int nagroda = 0;
+	public static Karta kartaDoWygrania ;
 	public static int szansaWygranej = 0;
+	public static String kartaZakladu = "";
 	
 	public static ArrayList<Karta> listaKartZakladu = new ArrayList<Karta>();
 	
-	static {
-		nowaKartaDoWygrania();
-	}
 
 	
-	
+	public static String getKartaZakladu() {
+		return kartaZakladu;
+	}
+
+
 	public static Karta getKartaDoWygrania() {
 		return kartaDoWygrania;
 	}
@@ -25,6 +28,9 @@ public class Zaklad {
 		return szansaWygranej;
 	}
 
+	public static String getSzansaWygranejText() {
+		return "Your winning rate is " + szansaWygranej + " to 36";
+	}
 
 	public static ArrayList<Karta> getListaKartZakladu() {
 		return listaKartZakladu;

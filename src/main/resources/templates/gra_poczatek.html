@@ -33,10 +33,16 @@
   margin: 200px;
 }
 
-button{
+.button3{
     position:absolute;
     top:73%;
     left:46%;
+}
+
+.button2_2{
+    position:absolute;
+    top:73%;
+    left:10%;
 }
 
 </style>
@@ -70,9 +76,8 @@ button{
 </div>
 
 
-
-<div class="textBoxG box1g" style = text-align:center>
-		There is with is <td th:switch="${wygrana.getRzadkosc()}">
+<div class="textBoxG box1g" style= "text-align:center">
+		There is <td th:switch="${wygrana.getRzadkosc()}">
 		<b><p th:case="'common'" style="color:black" th:text="${wygrana.getRzadkosc()}"></p>
 		<p th:case="'uncommon'"  style="color:green" th:text="${wygrana.getRzadkosc()}"></p>
 		<p th:case="'rare'" style="color:blue" th:text="${wygrana.getRzadkosc()}"></p>
@@ -87,10 +92,27 @@ button{
   <img class="right2" src="https://i.ibb.co/vJxBRzS/Przechwytywanie.png" alt="Ruleete" style="float:right" width="300" height="300">
 </div>
 
+<div class="container">
+		<div class="textBoxGP">
+		Your bet:
+			<div th:each="karta : ${listaKartZakladu}">
+				<p th:text="${karta}"></p>
+			</div>
+		</div>
+
+</div>
+
+<form action="http://localhost:8080/gra_zaklad">
+ 	 <button type="submit" class="button button2 button2_2"><big>Make a bet!</big></button>
+</form>
+		
+<p style="text-indent: 3.5cm" th:utext="${szansa}"></p>	
+
 <p style="clear:right"></p>
 <form action="http://localhost:8080/gra_losowanie">
-  <button type="submit" class="button button2">Let's spin!</button>
+  <button type="submit" class="button button2 button3"><big>Let's spin!</big></button>
 </form>
+
 
 
 <div class = "footer">

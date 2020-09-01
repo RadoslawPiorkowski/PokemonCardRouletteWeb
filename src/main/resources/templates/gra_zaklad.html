@@ -1,37 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<link rel = "stylesheet" type="text/css" href = "style.css">
-	<link rel = "stylesheet" type="text/css" href = "gra.css">
 	
 	<meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="https://lh3.googleusercontent.com/proxy/ND3p9DLQ-HV-Dx2G0peSMsEvNLdJ5xbea00Uzv3cf0g_BsxVnOnkQXgw4KnGLbyin1hgZSzOQDutU1KhVJ6r8YYP_tpiaLKHX57ulNhnTjRm7g"/>
 
-<title>Home site</title>
+<title>Game site</title>
 
 
 <style>
 
-body {
-  background: url("https://wallpaperplay.com/walls/full/b/1/8/49413.jpg") no-repeat center fixed;
-  background-size: 100% 100%;
-}
 
 .left {
-  max-width: 25%;
+  max-width: 27%;
   height: auto;
+  position:absolute;
+  top:30%;
+  left:5%;
 }
 
 
 .right {
-  max-width: 15%;
+  max-width: 30%;
   height: auto;
+
+}
+
+.right2 {
+  max-width: 20%;
+  height: auto;
+  margin: 200px;
+}
+
+.button3{
+    position:absolute;
+    top:73%;
+    left:46%;
+}
+
+.button2_2{
+    position:absolute;
+    top:42%;
+    left:24%;
 }
 
 </style>
 
 </head>
 <body>
+
 
 
 <div style = "float:right">
@@ -57,19 +75,44 @@ body {
         <a href='kontakt'><span>Contact</span></a>
 </div>
 
-<center>
-	<p><big>We invite you to our casino for a game of roulette!<br><br>
-	Get cards, trust your luck and of course, <b>catch them all!</b><br><br>
-        Enter the <b>game rules</b> and Professor Oak will introduce you to the game.</big></p>
-</center>
+
+<div class="textBoxG box1g" style= "text-align:center">
+	Remember! Your chance of winning increases proportionally to the rarity of the cards you bet.
+</div>
 
 
+<div>
+  <img class="right" src="https://i.ibb.co/jZb0xW0/366-3663389-pokemon-battle-revolution-trainer-models-hd-png-download.png" alt="Croupier" style="float:right" width="300" height="300">
+   <img class="right2" src="https://i.ibb.co/vJxBRzS/Przechwytywanie.png" alt="Ruleete" style="float:right" width="300" height="300">
+</div>
 
+ 
+<div class="container">
+		<div class="textBoxGP">
+		You can bet <b>up to 4 cards</b> from your deck! <br>
+		Your cards are:
+			<div th:each="karta : ${listaKart}">
+				<p th:text="${karta}"></p>
+			</div>
+		</div>
 
-  <img class="left" src="https://i.ibb.co/Q8MkYfs/62-629841-pokemon-ash-png-image-ash-ketchum.png" alt="Ash" style="float:left" width="300" height="300">
-  <img class="right" src="https://i.ibb.co/CzMzpkM/6754645-preview.jpg" alt="Team Rocket" style="float:right" width="300" height="300">
+</div>
 
-
+ 
+<div class="button2_2">
+	<form th:action="@{/gra_zaklad}" th:object="${kartaZakladu}" method="post" style = text-align:left >
+	    <div class="heading">
+	        <b><big id="emailHelp1" class="heading">Which card do you want to add to your bet?</big></b>
+	    </div>
+	    <br>
+	    <div class="form-group">
+	        <label for="exampleInputPassword1">Pokemon name</label>
+	        <input type="text" class="form-control item" id="name" placeholder="Pokemon" th:field="${kartaZakladu.nazwa}">
+	
+	    </div><br>
+	    <button type="submit" class="button button2"><big>Add to your bet!</big></button>
+	</form>
+</div>
 
 <div class = "footer">
 	<p>While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy. Copyright 2020. All Rights Reserved.
