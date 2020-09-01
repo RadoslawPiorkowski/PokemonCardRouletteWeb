@@ -119,6 +119,26 @@ public class Gracz {
 			e.printStackTrace();
 		}
 	}
+
+	public static void zmianaBan(Gracz gracz) throws SQLException {
+
+		try {
+			BazaDanych.getStatmentBD().execute("DELETE FROM Gracz WHERE nick = '" + gracz.nick + "';");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void zmianamail(Gracz gracz, String id) throws SQLException {
+
+		try {
+			BazaDanych.getStatmentBD().execute("UPDATE Gracz SET mail = '" + gracz.mail + "'WHERE ID_GRACZ = '" + id + "';");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	public static void updateDate() {

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel = "stylesheet" href = "login.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Login site</title>
+    <link rel="shortcut icon" type="image/png" href="https://lh3.googleusercontent.com/proxy/ND3p9DLQ-HV-Dx2G0peSMsEvNLdJ5xbea00Uzv3cf0g_BsxVnOnkQXgw4KnGLbyin1hgZSzOQDutU1KhVJ6r8YYP_tpiaLKHX57ulNhnTjRm7g"/>
+
+
+</head>
+<body>
+
+<p>
+    <a href="home">
+        <img border="0" alt="logo" src="https://fontmeme.com/permalink/200805/407a4c726448aed2f163b1ba6202957f.png" >
+    </a>
+</p>
+
+<div class="registration-form" id="sign">
+    <form th:action="@{/logowanie}" th:object="${graczZalogowany}" method="post" >
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control item" id="username" placeholder="Username" th:field="${graczZalogowany.nick}">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control item" id="password" placeholder="Password" th:field="${graczZalogowany.haslo}">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-block create-account">Login</button>
+        </div>
+        <div class="form-group">
+            <a class="loginButton" href="rejestracja">
+                <button type="button" class="btn btn-block create-account" href="rejestracja">New player</button>
+            </a>
+        </div>
+        <b><big id="emailHelp2" class="heading">Incorrect login or password</big></b>
+    </form>
+</div>
+
+
+<div class = "footer">
+    <p>While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy. Copyright 2020. All Rights Reserved.</center>
+        <br>Maciej & Radek Company 2020</p>
+</div>
+
+</body>
+</html>
