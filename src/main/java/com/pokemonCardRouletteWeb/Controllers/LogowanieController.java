@@ -20,9 +20,9 @@ public class LogowanieController {
     	model.addAttribute("graczZalogowany", new Gracz());
 
     	if(GraczZalogowany.id == 1){
-    	    return "paneladmin";
+    	    return "panelAdmin";
         } else if (GraczZalogowany.id > 1)
-            return "panelgracz";
+            return "panelGracz";
 
     	return "logowanie";
     }
