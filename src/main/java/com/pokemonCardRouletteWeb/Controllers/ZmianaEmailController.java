@@ -12,29 +12,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.sql.SQLException;
 
 @Controller
-public class ZmianaHaslaController {
+public class ZmianaEmailController {
 
 
-//    @GetMapping("/panelGracz")
-//    public String stronaZmianyHasla(Model model) {
-//        model.addAttribute("gracz7", new Gracz());
-//        return "panelGracz";
-//    }
-
-    @GetMapping("/panelGraczPassword")
+    @GetMapping("/panelGraczEmail")
     public String stronaZmianyEmail(Model model) {
-        model.addAttribute("gracz7", new Gracz());
-        return "panelGraczPassword";
+        model.addAttribute("gracz8", new Gracz());
+        return "panelGraczEmail";
     }
 
-    @PostMapping(value = "/panelGraczPassword")
-    public String stronaZmianyEmail(@ModelAttribute(name = "gracz7") Gracz gracz, Model model) throws SQLException {
-        model.addAttribute("gracz7", new Gracz());
-        if(gracz.haslo.length() > 2) {
-            Gracz.zmianahasla(gracz, GraczZalogowany.id + "");
-            return "panelGraczPasswordSuccess";
+    @PostMapping(value = "/panelGraczEmail")
+    public String stronaZmianyEmail(@ModelAttribute(name = "gracz8") Gracz gracz, Model model) throws SQLException {
+        model.addAttribute("gracz8", new Gracz());
+        if(gracz.mail.length() > 5) {
+            Gracz.zmianamail(gracz, GraczZalogowany.id + "");
+            return "panelGraczEmailSuccess";
         } else
-            return "panelGraczPasswordFail";
+            return "panelGraczEmailFail";
 
     }
 

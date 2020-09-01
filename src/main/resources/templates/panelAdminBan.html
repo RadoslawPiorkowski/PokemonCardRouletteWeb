@@ -3,7 +3,7 @@
 <head>
     <link rel = "stylesheet" type="text/css" href = "style.css">
     <meta charset="UTF-8">
-    <title>Gracz</title>
+    <title>Admin</title>
     <link rel="shortcut icon" type="image/png" href="https://lh3.googleusercontent.com/proxy/ND3p9DLQ-HV-Dx2G0peSMsEvNLdJ5xbea00Uzv3cf0g_BsxVnOnkQXgw4KnGLbyin1hgZSzOQDutU1KhVJ6r8YYP_tpiaLKHX57ulNhnTjRm7g"/>
 
 </head>
@@ -30,28 +30,26 @@
     <a href='zdobadzKarty'><span>Get cards</span></a>
     <a href='kontakt'><span>Contact</span></a>
 </div>
-
-<img class="left" src="https://i.pinimg.com/originals/bd/40/ee/bd40ee39c7d5a63faa8ffbfd0bc2db00.jpg" alt="Czarmander" style="float:left; margin-right:1px" width="20" height="10">
+<img class="left" src="http://cdn.animalhi.com/1920x1080/20121028/pokemon%20charizard%20simple%20background%20white%20background%201920x1080%20wallpaper_www.animalhi.com_43.jpg" alt="Charizard" style="float:left; margin-right:1px" width="300" height="100">
 <br>
 <br>
 <br>
 
-<b><big id="emailHelp2" class="heading">How can I help you?</big></b>
-
-<br>
-<br>
-<br>
-
-
-<form action="http://localhost:8080/panelGraczPassword">
-    <button type="submit" class="button button2"><big>Change my password!</big></button>
+<form th:action="@{/panelAdminBan}" th:object="${gracz9}" method="post" style = text-align:left>
+    <div class="heading" style = text-align:center>
+        <b><big id="ban" class="heading">Trainer pissed you off?</big></b>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="trainer1">Trainer name</label>
+        <input type="text" class="form-control" id="trainer1" placeholder="Trainer"><br><br>
+        <b><small id="emailHelp" class="form-text text-muted">Please repeat trainer name.</small></b><br>
+        <label for="trainer2">Trainer name</label>
+        <input type="text" class="form-control" id="trainer2" placeholder="Trainer" th:field="${gracz9.nick}">
+    </div><br>
+    <button type="submit" class="button button3">Ban trainer</button>
 </form>
-<br>
-<br>
-<br>
-<form action="http://localhost:8080/panelGraczEmail">
-    <button type="submit" class="button button2"><big>Change my Email!</big></button>
-</form>
+
 
 <div class = "footer">
     <p>While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy. Copyright 2020. All Rights Reserved.</center>

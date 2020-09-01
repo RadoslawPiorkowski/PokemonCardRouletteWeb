@@ -1,9 +1,9 @@
 package com.pokemonCardRouletteWeb.Data;
 
+import com.pokemonCardRouletteWeb.BazaDanych;
+
 import java.sql.ResultSet;
 import java.util.Date;
-
-import com.pokemonCardRouletteWeb.BazaDanych;
 
 public class GraczZalogowany {
 
@@ -20,12 +20,7 @@ public class GraczZalogowany {
 		GraczZalogowany.mail = getMailFromDB(gracz.nick);
 		GraczZalogowany.dataFree = getFreeFromDB(nick);
 		czyOdebranoFreeKarte();
-		
-		
 	}
-	
-
-
 
 	public static int getId() {
 		return id;
@@ -79,7 +74,7 @@ public class GraczZalogowany {
 	
 	public static String getMailFromDB(String nick) {
 		try {
-            ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM gracz where nick = '"+nick+"';");
+            ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM gracz where nick = '" + nick + "';");
             
             data.next();
             String mail = data.getString("mail");

@@ -35,7 +35,7 @@ public class LogowanieController {
     		GraczZalogowany.zaloguj(gracz);
     		return "home";
     	} else 
-    		return "logowanie";
+    		return "logowanieError";
     	
     }
 }
