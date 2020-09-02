@@ -76,7 +76,6 @@ public class Zaklad {
 	}
 	
 	public static void aktualizujSzanseWygranej() {
-		szansaWygranej = 0;
 
 		if(obliczSzanseWygranej() > 30)
 			szansaWygranej = 30;
@@ -86,7 +85,7 @@ public class Zaklad {
 	
 	
 	private static int obliczSzanseWygranej() {
-		int szansa = 0;
+		double szansa = 0;
 		int silaKasyna = 0;
 		int silaKart = 0;
 		
@@ -100,6 +99,7 @@ public class Zaklad {
 			silaKasyna += 6;
 		else
 			silaKasyna += 10;
+		
 		
 		for (Karta karta : listaKartZakladu) {
 			String rzadkosc = karta.getRzadkosc();
@@ -115,9 +115,9 @@ public class Zaklad {
 				silaKart += 10;
 		}
 		
-		szansa = ((silaKasyna + silaKart) / 36) * silaKart;
+		szansa = ( 36 /((double)(silaKasyna + silaKart)))  * silaKart;
 		
-		return szansa;
+		return (int) szansa;
 	}
 	
 	

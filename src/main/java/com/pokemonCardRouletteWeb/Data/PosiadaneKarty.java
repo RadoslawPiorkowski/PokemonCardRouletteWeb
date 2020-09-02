@@ -32,6 +32,29 @@ public class PosiadaneKarty{
     	return new Karta(data.getInt("id_Karta"), data.getString("nazwa"), data.getString("rzadkosc"), data.getString("grafika"));
     }
 
+    public static void zabierzKarte(String nazwa) {
+    	
+    	try {
+			int idKarty = getKartaPoNazwie(nazwa).getId();
+			
+			 BazaDanych.getStatmentBD().execute("DELETE FROM gracz_karta WHERE id_gracz_karta IN (SELECT id_gracz_karta FROM gracz_karta WHERE gracz_id = "+ GraczZalogowany.id +" and karta_id =" + idKarty + " LIMIT 1);");
+			 Zaklad.aktualizujSzanseWygranej();
+			 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    
+    public static boolean czyGraczPosiadaKarte(String nazwa) {
+    	
+    	for (Karta karta : listaKart) {
+			if (karta.getNazwa().equals(nazwa))
+				return true;
+		}
+    	
+    	return false;
+    }
     
 	public static void pobierzKartyGraczaZBazyDanych() {
 

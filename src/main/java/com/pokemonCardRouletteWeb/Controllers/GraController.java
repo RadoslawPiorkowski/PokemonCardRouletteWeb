@@ -60,6 +60,7 @@ public class GraController {
     	model.addAttribute("listaKart", PosiadaneKarty.getListaKart());
     	model.addAttribute("kartaZakladu", new Karta());
     	model.addAttribute("szansa", Zaklad.getSzansaWygranejText());
+
     
         return "gra_zaklad";
     }
@@ -68,14 +69,29 @@ public class GraController {
     @PostMapping(value = "/gra_zaklad")
     public String strona_stawka(@ModelAttribute(name = "kartaZakladu") Karta karta, Model model) throws SQLException {
 
+    	if(PosiadaneKarty.czyGraczPosiadaKarte(karta.getNazwa())) {
+	    	try {
+	        	Zaklad.listaKartZakladu.add(PosiadaneKarty.getKartaPoNazwie(karta.getNazwa()));
+	        	PosiadaneKarty.zabierzKarte(karta.getNazwa());
+	        	PosiadaneKarty.pobierzKartyGraczaZBazyDanych();
+	        	
+	        	return "redirect:/gra_poczatek";
+	
+			} catch (Exception e) {
+				return "redirect:/gra_zaklad";
+			}
+    	} else
+    		return "redirect:/gra_zaklad";
+    }
+    
+    
+    @GetMapping("/gra_losowanie")
+    public String stronaGra_losowanie(Model model) {
     	
-    	Zaklad.listaKartZakladu.add(PosiadaneKarty.getKartaPoNazwie(karta.getNazwa()));
-    	System.out.println("dupa");
+    	if(GraczZalogowany.nick.equals(""))
+    		return "redirect:/logowanie";
     	
-    	
-    		return "redirect:/gra_poczatek";
-
-    	
+        return "gra_losowanie";
     }
     
 }
