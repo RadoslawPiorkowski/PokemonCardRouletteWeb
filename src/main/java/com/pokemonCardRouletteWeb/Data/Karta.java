@@ -1,9 +1,6 @@
 package com.pokemonCardRouletteWeb.Data;
 
 import java.io.Serializable;
-import java.sql.SQLException;
-
-import com.pokemonCardRouletteWeb.BazaDanych;
 
 public class Karta implements Serializable {
 
@@ -22,6 +19,10 @@ public class Karta implements Serializable {
 		this.nazwa = nazwa;
 		this.rzadkosc = rzadkosc;
 		this.grafika = grafika;
+	}
+
+	public Karta(int id_karta) {
+		this.id = id_karta;
 	}
 
 

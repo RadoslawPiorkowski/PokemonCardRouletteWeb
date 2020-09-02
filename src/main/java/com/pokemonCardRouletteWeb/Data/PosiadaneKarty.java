@@ -32,6 +32,25 @@ public class PosiadaneKarty{
     	return new Karta(data.getInt("id_Karta"), data.getString("nazwa"), data.getString("rzadkosc"), data.getString("grafika"));
     }
 
+	public static int getKartaIDPoNazwie(String nazwa) throws SQLException {
+		ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM Karta where nazwa ='" + nazwa +"'");
+		data.next();
+		//data.next();
+		//Karta id_karta = new Karta(data.getInt("id_Karta"));
+		return data.getInt("id_Karta");
+
+	}
+
+	public static int getTrainerIDPoNazwie(String nick) throws SQLException {
+		ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM Gracz where nick ='" + nick +"'");
+		data.next();
+
+		Gracz id_gracz = new Gracz(data.getInt("id_gracz"));
+		return id_gracz.getId();
+	}
+
+
+
     
 	public static void pobierzKartyGraczaZBazyDanych() {
 
@@ -52,16 +71,16 @@ public class PosiadaneKarty{
         }
 	}
 
-	public static void pobierzWszystkieKartyZBazyDanych() {
+	public static void pobierzWszystkieKartyZBazyDanych(){
 
 		wyczyscListeKart();
 
 		try {
 
-			ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM Gracz_Karta");
+			ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM Karta");
 
 			while (data.next())
-					listaKart.add(getKartaPoID(data.getInt("karta_id")));
+					listaKart.add(getKartaPoID(data.getInt("ID_KARTA")));
 			listaKart.sort(new KartyComparator());
 
 		} catch (SQLException e) {
@@ -116,6 +135,15 @@ public class PosiadaneKarty{
 	public static ArrayList<Karta> getListaKartNowych() {
 		return listaKartNowych;
 	}
-    
-    
+
+
+	static class getString extends Karta {
+		public String nick;
+
+		public getString(String id_karta) {
+		}
+	}
+
+	private static class getIntiger {
+	}
 }

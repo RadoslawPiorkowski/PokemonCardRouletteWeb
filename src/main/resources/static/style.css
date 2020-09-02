@@ -99,6 +99,21 @@ li a:hover:not(.active) {
 }
 
 
+.textBoxGG {
+  width: 300px;
+  margin: 50px auto;
+  border: 4px solid #9fd1cf;
+  padding: 20px;
+  font-weight: 100;
+  font-size: 16px;
+  color: #000000;
+  font-family: VT323;
+  position: right;
+  top: 220px;
+  left: 180px;
+}
+
+
 .textBox {
   width: 470px;
   margin: 50px auto;

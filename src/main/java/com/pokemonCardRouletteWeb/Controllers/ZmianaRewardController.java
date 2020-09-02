@@ -30,11 +30,12 @@ public class ZmianaRewardController {
     @PostMapping(value = "/panelAdminReward")
     public String stronaZmianyReward(@ModelAttribute(name = "gracz10") Gracz gracz, Model model) throws SQLException {
         model.addAttribute("gracz10", new Gracz());
+
         if(gracz.nick.length() > 2) {
-            Gracz.zmianaBan(gracz);
-            return "panelAdminBanSuccess";
+            Gracz.zmianaReward(gracz.getNazwa(), gracz.getNick());
+            return "home";
         } else
-            return "panelAdminBanFail";
+            return "kontakt";
 
     }
 
