@@ -2,8 +2,6 @@ package com.pokemonCardRouletteWeb.Controllers;
 
 import com.pokemonCardRouletteWeb.Data.Gracz;
 import com.pokemonCardRouletteWeb.Data.GraczZalogowany;
-import com.pokemonCardRouletteWeb.Data.PosiadaneKarty;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,11 +1,11 @@
 package com.pokemonCardRouletteWeb.Data;
 
 
+import com.pokemonCardRouletteWeb.BazaDanych;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import com.pokemonCardRouletteWeb.BazaDanych;
 
 
 public class PosiadaneKarty{
@@ -50,6 +50,23 @@ public class PosiadaneKarty{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+	}
+
+	public static void pobierzWszystkieKartyZBazyDanych() {
+
+		wyczyscListeKart();
+
+		try {
+
+			ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM Gracz_Karta");
+
+			while (data.next())
+					listaKart.add(getKartaPoID(data.getInt("karta_id")));
+			listaKart.sort(new KartyComparator());
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 
