@@ -31,6 +31,7 @@
     <a href='kontakt'><span>Contact</span></a>
 </div>
 <img class="left" src="http://cdn.animalhi.com/1920x1080/20121028/pokemon%20charizard%20simple%20background%20white%20background%201920x1080%20wallpaper_www.animalhi.com_43.jpg" alt="Charizard" style="float:left; margin-right:1px" width="300" height="100">
+
 <br>
 <br>
 <br>
@@ -45,43 +46,20 @@
         <input type="text" class="form-control" id="trainer1" placeholder="Trainer" th:field="${gracz10.nick}"><br><br>
         <br>
         <b><small id="emailHelp" class="form-text text-muted">Select card</small></b><br>
-        <label for="trainer2">Trainer name</label>
-        <input type="text" class="form-control" id="trainer2" placeholder="Trainer">
+        <label for="name">Pokemon name</label>
+        <input type="text" class="form-control" id="name" placeholder="Pokemon" th:field="${gracz10.nazwa}">
     </div><br>
-    <button type="submit" class="button button3">Ban trainer</button>
-</form>
+    <button type="submit" class="button button3">Send card</button>
 
-
-
-
-
-<div class="button2_2">
-    <form th:action="@{/gra_zaklad}" th:object="${kartaZakladu}" method="post" style = text-align:left >
-        <div class="heading">
-            <b><big id="emailHelp1" class="heading">Which card do you want to add to your bet?</big></b>
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="name">Pokemon name</label>
-            <input type="text" class="form-control item" id="name" placeholder="Pokemon" th:field="${kartaZakladu.nazwa}">
-
-        </div><br>
-        <button type="submit" class="button button2"><big>Add to your bet!</big></button>
-    </form>
-</div>
-
-
-<div class="container">
-    <div class="textBoxGP">
-        You can bet <b>up to 4 cards</b> from your deck! <br>
-        Your cards are:
-        <div th:each="karta : ${listaKart}">
-            <p th:text="${karta}"></p>
+    <div class="container">
+        <div class="textBoxGG">
+            List of cards that you can send to trainer:
+            <div th:each="karta : ${listaKart}">
+                <p th:text="${karta}"></p>
+            </div>
         </div>
     </div>
-
-</div>
-
+</form>
 
 
 <div class = "footer">

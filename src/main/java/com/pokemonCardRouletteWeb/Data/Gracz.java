@@ -12,6 +12,7 @@ public class Gracz {
 	public  String nick;
 	public  String mail;
 	public  String haslo;
+	public	String nazwa;
 	
 	
 	
@@ -26,11 +27,17 @@ public class Gracz {
 		this.haslo = haslo;
 	}
 
+	public Gracz(int id_gracz) {
 
+	}
 
 
 	public int getId() {
 		return id;
+	}
+
+	public String getNazwa() {
+		return nazwa;
 	}
 
 
@@ -114,6 +121,16 @@ public class Gracz {
 
 		try {
 			BazaDanych.getStatmentBD().execute("UPDATE Gracz SET haslo = '" + gracz.haslo + "'WHERE ID_GRACZ = '" + id + "';");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void zmianaReward(String gracz, String karta) throws SQLException {
+
+		try {
+			BazaDanych.getStatmentBD().execute("INSERT INTO gracz_karta (gracz_id, karta_id) VALUES (" + PosiadaneKarty.getTrainerIDPoNazwie(gracz) + "," + PosiadaneKarty.getKartaIDPoNazwie(karta) + ");");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
