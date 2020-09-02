@@ -1,7 +1,10 @@
 package com.pokemonCardRouletteWeb.Data;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import com.pokemonCardRouletteWeb.BazaDanych;
 
 public class Zaklad {
 	
@@ -9,15 +12,21 @@ public class Zaklad {
 	public static Karta kartaDoWygrania ;
 	public static int szansaWygranej = 0;
 	public static String kartaZakladu = "";
+	public static int zwyciezkiNumer;
+
 	
 	public static ArrayList<Karta> listaKartZakladu = new ArrayList<Karta>();
 	
 
 	
+	
+	public static int getZwyciezkiNumer() {
+		return zwyciezkiNumer;
+	}
+
 	public static String getKartaZakladu() {
 		return kartaZakladu;
 	}
-
 
 	public static Karta getKartaDoWygrania() {
 		return kartaDoWygrania;
@@ -32,10 +41,20 @@ public class Zaklad {
 		return "Your winning rate is " + szansaWygranej + " to 36";
 	}
 
+	public static String getSzansaWygranejText2() {
+		return "Your winning rate was " + szansaWygranej + " to 36";
+	}
+	
 	public static ArrayList<Karta> getListaKartZakladu() {
 		return listaKartZakladu;
 	}
 
+	
+	public static void wylosujZwyciezkiNumer() {
+		int randomNumer =(int) (Math.random() * 36);
+		
+		zwyciezkiNumer = randomNumer;
+	}
 
 	public static void nowaKartaDoWygrania() {
 		int randomCard =(int) (Math.random() * 150 +1);
@@ -121,8 +140,39 @@ public class Zaklad {
 	}
 	
 	
+    
+	public static void przydzielWygrana() {
+		
+		
+		try {
+			
+			for(Karta karta: listaKartZakladu) {
+				
+              BazaDanych.getStatmentBD().execute("INSERT INTO gracz_karta (gracz_id, karta_id) VALUES " +
+              "('" + GraczZalogowany.id + "', '" + karta.getId() + "');");
+			}
+			
+			BazaDanych.getStatmentBD().execute("INSERT INTO gracz_karta (gracz_id, karta_id) VALUES " +
+		              "('" + GraczZalogowany.id + "', '" + kartaDoWygrania.getId() + "');");
+			
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void wyczyscZaklad() {
 		listaKartZakladu.clear();
+	}
+
+	public static String getZwyciezkiNumerText() {
+		return "The number drawn is " + zwyciezkiNumer;
+	}
+
+	public static String getKartaDoWygraniaText() {
+		return "So you won - " + kartaDoWygrania.getNazwa() + "!!! Maybe one more round?";
 	}
 	
 	

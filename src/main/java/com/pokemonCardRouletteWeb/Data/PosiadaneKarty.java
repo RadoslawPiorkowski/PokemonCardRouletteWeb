@@ -32,7 +32,7 @@ public class PosiadaneKarty{
     	return new Karta(data.getInt("id_Karta"), data.getString("nazwa"), data.getString("rzadkosc"), data.getString("grafika"));
     }
 
-<<<<<<< HEAD
+
     public static void zabierzKarte(String nazwa) {
     	
     	try {
@@ -56,7 +56,9 @@ public class PosiadaneKarty{
     	
     	return false;
     }
-=======
+
+    
+    
 	public static int getKartaIDPoNazwie(String nazwa) throws SQLException {
 		ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM Karta where nazwa ='" + nazwa +"'");
 		data.next();
@@ -74,9 +76,6 @@ public class PosiadaneKarty{
 		return id_gracz.getId();
 	}
 
-
-
->>>>>>> ed60fc63634345c23559bc5d765f29c9b9687ca1
     
 	public static void pobierzKartyGraczaZBazyDanych() {
 
@@ -142,6 +141,7 @@ public class PosiadaneKarty{
         }
 	}
     
+
 	
 	public static void wyczyscListeKart() {
 		listaKart.clear();

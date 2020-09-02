@@ -28,12 +28,9 @@
 }
 
 .right2 {
-  max-width: 45%;
+  max-width: 20%;
   height: auto;
   margin: 200px;
-  position:absolute;
-  top:20%;
-  left:20%;
 }
 
 .button3{
@@ -53,13 +50,7 @@
 </head>
 <body>
 
-<script type="text/javascript">
-(function(){
-   setTimeout(function(){
-     window.location="http://localhost:8080/gra_wynik";
-   },4000); /* 1000 = 1 second*/
-})();
-</script>
+
 
 <div style = "float:right">
 	<a class="loginButton" href="logowanie">
@@ -86,18 +77,20 @@
 
 
 <div class="textBoxG box1g" style= "text-align:center">
-	3 ... 2 ... 1 ... let's go! Cross your fingers for victory!
+		<p th:text="${wylosowanyNumer}"></p>
+		<p th:text="${wynik}"></p>
+		<p th:text="${wygrana}"></p>
 </div>
 
 
 <div>
-  <img class="right2" src="https://im7.ezgif.com/tmp/ezgif-7-565f5f036e14.gif" alt="Ruleete" width="300" height="300">
   <img class="right" src="https://i.ibb.co/jZb0xW0/366-3663389-pokemon-battle-revolution-trainer-models-hd-png-download.png" alt="Croupier" style="float:right" width="300" height="300">
-  <img class="left" src="https://vignette.wikia.nocookie.net/pokemon-ingame-reviews-is-this-pokemon-any-good/images/e/e2/Machamp.jpg/revision/latest/scale-to-width-down/340?cb=20200317164507" alt="Bodyguard" style="float:right" width="300" height="300">
+  <img class="right2" src="https://i.ibb.co/vJxBRzS/Przechwytywanie.png" alt="Ruleete" style="float:right" width="300" height="300">
+  <img class="left" src="https://i.ibb.co/tYXTq5r/91-915043-pikachu-clipart-printable-pikachu-pokemon.png" alt="Happy pokemon" style="float:left" width="300" height="300"> 
 </div>
 
  
- 
+
 
 <div class = "footer">
 	<p>While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy. Copyright 2020. All Rights Reserved.

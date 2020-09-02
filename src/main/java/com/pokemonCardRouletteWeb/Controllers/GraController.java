@@ -24,8 +24,10 @@ public class GraController {
     public String stronaGry() {
     	
     	if(Zaklad.nagroda == 0) {
+    		Zaklad.wyczyscZaklad();
     		Zaklad.nowaKartaDoWygrania();
     		Zaklad.nagroda = 1;
+    		Zaklad.aktualizujSzanseWygranej();
     	}
     	
     	
@@ -62,7 +64,9 @@ public class GraController {
     	model.addAttribute("szansa", Zaklad.getSzansaWygranejText());
 
     
-        return "gra_zaklad";
+
+    	return "gra_zaklad";
+   
     }
     
     
@@ -88,10 +92,46 @@ public class GraController {
     @GetMapping("/gra_losowanie")
     public String stronaGra_losowanie(Model model) {
     	
+    	
     	if(GraczZalogowany.nick.equals(""))
     		return "redirect:/logowanie";
+    		
     	
         return "gra_losowanie";
     }
+    
+    
+    @PostMapping("/gra_losowanie")
+    public String stronaGra_wylosowane(Model model) {
+    	
+    	
+    	if(GraczZalogowany.nick.equals(""))
+    		return "redirect:/logowanie";
+    	
+    
+        return "gra_losowanie";
+    }
+    
+    @GetMapping("/gra_wynik")
+    public String stronaGra_wygrana(Model model) {
+    	
+    	if(GraczZalogowany.nick.equals(""))
+    		return "redirect:/logowanie";
+    	
+    	Zaklad.wylosujZwyciezkiNumer();
+    	model.addAttribute("wylosowanyNumer", Zaklad.getZwyciezkiNumerText());
+    	model.addAttribute("wygrana", Zaklad.getKartaDoWygraniaText());
+    	model.addAttribute("wynik", Zaklad.getSzansaWygranejText2());
+    	
+    	if(Zaklad.getZwyciezkiNumer() <= Zaklad.getSzansaWygranej()) {
+    		Zaklad.nagroda = 0;
+    		Zaklad.przydzielWygrana();
+            return "gra_wygrana";
+    	} else {
+    		Zaklad.nagroda = 0;
+        	return "gra_przegrana";
+    	}
+    }
+
     
 }
