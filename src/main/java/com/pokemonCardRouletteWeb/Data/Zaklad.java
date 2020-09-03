@@ -105,17 +105,17 @@ public class Zaklad {
 	
 	private static int obliczSzanseWygranej() {
 		double szansa = 0;
-		int silaKasyna = 0;
-		int silaKart = 0;
+		double silaKasyna = 0;
+		double silaKart = 0;
 		
 		if(kartaDoWygrania.getRzadkosc().equals("common"))
 			silaKasyna += 2;
 		else if(kartaDoWygrania.getRzadkosc().equals("uncommon"))
 			silaKasyna += 4;
 		else if(kartaDoWygrania.getRzadkosc().equals("rare"))
-			silaKasyna += 8;
-		else if(kartaDoWygrania.getRzadkosc().equals("legendary"))
 			silaKasyna += 6;
+		else if(kartaDoWygrania.getRzadkosc().equals("legendary"))
+			silaKasyna += 8;
 		else
 			silaKasyna += 10;
 		
@@ -127,14 +127,14 @@ public class Zaklad {
 			else if(rzadkosc.equals("uncommon"))
 				silaKart += 4;
 			else if(rzadkosc.equals("rare"))
-				silaKart += 8;
-			else if(rzadkosc.equals("legendary"))
 				silaKart += 6;
+			else if(rzadkosc.equals("legendary"))
+				silaKart += 8;
 			else
 				silaKart += 10;
 		}
 		
-		szansa = ( 36 /((double)(silaKasyna + silaKart)))  * silaKart;
+		szansa = ( 36 /(silaKasyna + silaKart))  * silaKart;
 		
 		return (int) szansa;
 	}
