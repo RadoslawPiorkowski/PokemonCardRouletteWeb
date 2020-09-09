@@ -206,8 +206,8 @@ INSERT INTO KARTA(ID_KARTA, NAZWA, RZADKOSC, GRAFIKA) VALUES
 (151, 'Mew', 'mythic', 'https://pkmncards.com/wp-content/uploads/mew-wizards-black-star-promos-9.jpg');
 
 insert into gracz (nick, mail, haslo) values
-('admin', 'admin@pokemon.com', 'admin'),
-('Ash', 'keczup@pokemon.com', 'ash');
+('admin', 'admin@pokemon.com', 'admin1'),
+('Ash', 'keczup@pokemon.com', 'ash1');
 
 insert into gracz_karta (gracz_id, karta_id) values
 (2,1),
