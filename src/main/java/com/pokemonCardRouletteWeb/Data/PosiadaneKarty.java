@@ -123,7 +123,7 @@ public class PosiadaneKarty{
             ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT COUNT (karta) FROM Karta");
             data.next();
             
-            int liczbaKart = data.getInt("count") - 1;
+            int liczbaKart = data.getInt("count");
             
             for(int i = 0; i < ilosc; i++) {
             	
