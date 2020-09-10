@@ -41,11 +41,17 @@ body {
         <a href='kontakt'><span>Contact</span></a>
 </div>
 
-<div>
+<img src="https://cdn.bulbagarden.net/upload/3/3e/039Jigglypuff.png" alt="Oak" style="float:right">
+
+
+<div class="container">
+    <div class="textBox box1">
 	<tr th:each="wiadomosc : ${listaWiadomosci}">
+
 		<p style="white-space: pre;" th:text="${wiadomosc.toString()}"></p>
-	</tr>
- </div>
+    </tr>
+    </div>
+</div>
 
 <div class = "footer">
 	<p>While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy. Copyright 2020. All Rights Reserved.
