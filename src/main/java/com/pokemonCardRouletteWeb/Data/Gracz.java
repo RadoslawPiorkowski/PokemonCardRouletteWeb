@@ -157,6 +157,94 @@ public class Gracz {
 		}
 	}
 	
+	public static void zmniejszKase(int wartosc) throws SQLException {
+
+		try {
+			
+			ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT kasa FROM gracz where nick = '"+ GraczZalogowany.nick +"';");
+			data.next();
+			
+			int kasa = data.getInt(1) - wartosc;
+			
+			BazaDanych.getStatmentBD().execute("UPDATE Gracz SET kasa = " + kasa + " WHERE ID_GRACZ = " + GraczZalogowany.id + ";");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public static boolean czyStacNaKupno(int wartosc) {
+
+		try {
+			
+			ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT kasa FROM gracz where nick = '"+ GraczZalogowany.nick +"';");
+			data.next();
+			
+			int kasa = data.getInt(1);
+			
+			if (kasa >= wartosc)
+				return true;	
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	
+	public static int getKasa() {
+		try {
+			
+			ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT kasa FROM gracz where nick = '"+ GraczZalogowany.nick +"';");
+			data.next();
+			
+			int kasa = data.getInt(1);
+		
+			return kasa;	
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+		
+	}
+	
+	
+	public static void zwiekszKase(int wartosc) throws SQLException {
+
+		try {
+			
+			ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT kasa FROM gracz where nick = '"+ GraczZalogowany.nick +"';");
+			data.next();
+			
+			int kasa = data.getInt(1) + wartosc;
+			
+			BazaDanych.getStatmentBD().execute("UPDATE Gracz SET kasa = " + kasa + " WHERE ID_GRACZ = " + GraczZalogowany.id + ";");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void zwiekszKaseRandom() throws SQLException {
+
+		try {
+			
+			ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT kasa FROM gracz where nick = '"+ GraczZalogowany.nick +"';");
+			data.next();
+			
+			int wartosc = (int) (Math.random() * 5 + 1);
+			int kasa = data.getInt(1) + wartosc;
+			
+			BazaDanych.getStatmentBD().execute("UPDATE Gracz SET kasa = " + kasa + " WHERE ID_GRACZ = " + GraczZalogowany.id + ";");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public static void updateDate() {
 

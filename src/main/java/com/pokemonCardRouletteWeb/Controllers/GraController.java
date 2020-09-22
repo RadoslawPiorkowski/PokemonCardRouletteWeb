@@ -113,7 +113,7 @@ public class GraController {
     }
     
     @GetMapping("/gra_wynik")
-    public String stronaGra_wygrana(Model model) {
+    public String stronaGra_wygrana(Model model) throws SQLException {
     	
     	if(GraczZalogowany.nick.equals(""))
     		return "redirect:/logowanie";
@@ -124,9 +124,10 @@ public class GraController {
     	model.addAttribute("wynik", Zaklad.getSzansaWygranejText2());
     	
     	if(Zaklad.getZwyciezkiNumer() <= Zaklad.getSzansaWygranej()) {
-    		Zaklad.nagroda = 0;
-    		Zaklad.przydzielWygrana();
-            return "gra_wygrana";
+				Gracz.zwiekszKaseRandom();
+	    		Zaklad.nagroda = 0;
+	    		Zaklad.przydzielWygrana();
+	            return "gra_wygrana";
     	} else {
     		Zaklad.nagroda = 0;
         	return "gra_przegrana";

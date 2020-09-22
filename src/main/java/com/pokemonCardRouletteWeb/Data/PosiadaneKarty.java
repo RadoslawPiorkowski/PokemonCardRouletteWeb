@@ -10,11 +10,15 @@ import java.util.ArrayList;
 
 public class PosiadaneKarty{
 	
+	public static int generacje; 
 
 	public static ArrayList<Karta> listaKart = new ArrayList<Karta>();
 	public static ArrayList<Karta> listaKartNowych = new ArrayList<Karta>();
 
 
+	static {
+		ustawDostepneGeneracje();
+	}
 	
     
     public static Karta getKartaPoID(int kartaId) throws SQLException {
@@ -25,7 +29,13 @@ public class PosiadaneKarty{
     }
 
 	
-    public static Karta getKartaPoNazwie(String nazwa) throws SQLException {
+    public static void ustawDostepneGeneracje() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public static Karta getKartaPoNazwie(String nazwa) throws SQLException {
     	ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM Karta where nazwa ='" + nazwa +"'");
     	data.next();
     	
