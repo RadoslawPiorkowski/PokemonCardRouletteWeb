@@ -8,17 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-public class PosiadaneKarty{
-	
-	public static int generacje; 
+public class PosiadaneKarty{ 
 
 	public static ArrayList<Karta> listaKart = new ArrayList<Karta>();
 	public static ArrayList<Karta> listaKartNowych = new ArrayList<Karta>();
 
-
-	static {
-		ustawDostepneGeneracje();
-	}
 	
     
     public static Karta getKartaPoID(int kartaId) throws SQLException {
@@ -28,11 +22,6 @@ public class PosiadaneKarty{
     	return new Karta(kartaId, data.getString("nazwa"), data.getString("rzadkosc"), data.getString("grafika"));
     }
 
-	
-    public static void ustawDostepneGeneracje() {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 	public static Karta getKartaPoNazwie(String nazwa) throws SQLException {
@@ -133,11 +122,13 @@ public class PosiadaneKarty{
             ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT COUNT (karta) FROM Karta");
             data.next();
             
-            int liczbaKart = data.getInt("count");
+//            int liczbaKart = data.getInt("count");
             
             for(int i = 0; i < ilosc; i++) {
             	
-            	int losowaKarta = (int)( Math.random() * liczbaKart) + 1;
+//            	int losowaKarta = (int)( Math.random() * liczbaKart) + 1;
+            	
+            	int losowaKarta = numerKartyZGeneracji();
             	
                 BazaDanych.getStatmentBD().execute("INSERT INTO gracz_karta (gracz_id, karta_id) VALUES " +
                         "('" + GraczZalogowany.id + "', '" + losowaKarta + "');");
@@ -151,6 +142,36 @@ public class PosiadaneKarty{
         }
 	}
     
+	
+	public static int numerKartyZGeneracji() {
+		
+		int numer = 0;
+		boolean gen1 = Generacje.genOne;
+		boolean gen2 = Generacje.genTwo;
+		boolean gen3 = Generacje.genThree;
+		
+		if(!gen2 && !gen3) // 0 or 1
+			numer = (int) (Math.random() * 151 + 1);
+		else if(!gen1 && gen2 && !gen3) // 2
+			numer = (int) (Math.random() * 100 + 152);
+		else if(!gen1 && !gen2 && gen3) // 3
+			numer = (int) (Math.random() * 135 + 252);	
+		else if(gen1 && gen2 && !gen3) // 1 and 2
+			numer = (int) (Math.random() * 251 + 1);
+		else if(!gen1 && gen2 && !gen3) // 2 and 3
+			numer = (int) (Math.random() * 235 + 152);
+		else if(!gen1 && gen2 && !gen3) // 1 and 2 and 3
+			numer = (int) (Math.random() * 386 + 1);
+		else if(!gen1 && gen2 && !gen3) { // 1 and 3
+			int random = (int) (Math.random() * 2);
+			if (random == 0)
+				numer = (int) (Math.random() * 151 + 1);
+			else
+				numer = (int) (Math.random() * 135 + 252);
+		}
+		
+		return numer;
+	}
 
 	
 	public static void wyczyscListeKart() {

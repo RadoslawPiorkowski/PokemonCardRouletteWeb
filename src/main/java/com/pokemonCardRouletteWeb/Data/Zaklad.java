@@ -57,7 +57,7 @@ public class Zaklad {
 	}
 
 	public static void nowaKartaDoWygrania() {
-		int randomCard =(int) (Math.random() * 150 +1);
+		int randomCard = PosiadaneKarty.numerKartyZGeneracji();
 		
 		try {
 			kartaDoWygrania = PosiadaneKarty.getKartaPoID(randomCard);
