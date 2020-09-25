@@ -30,25 +30,38 @@
     <a href='zdobadzKarty'><span>Get cards</span></a>
     <a href='kontakt'><span>Contact</span></a>
 </div>
+
 <img class="left" src="http://cdn.animalhi.com/1920x1080/20121028/pokemon%20charizard%20simple%20background%20white%20background%201920x1080%20wallpaper_www.animalhi.com_43.jpg" alt="Charizard" style="float:left; margin-right:1px" width="300" height="100">
 <br>
 <br>
 <br>
 
-<form th:action="@{/panelAdminBan}" th:object="${gracz9}" method="post" style = text-align:left>
-    <div class="heading" style = text-align:center>
-        <b><big id="ban" class="heading">Trainer pissed you off?</big></b>
-    </div>
-    <br>
-    <div class="form-group">
-        <label for="trainer1">Trainer name</label>
-        <input type="text" class="form-control" id="trainer1" placeholder="Trainer"><br><br>
-        <b><small id="emailHelp" class="form-text text-muted">Please repeat trainer name.</small></b><br>
-        <label for="trainer2">Trainer name</label>
-        <input type="text" class="form-control" id="trainer2" placeholder="Trainer" th:field="${gracz9.nick}">
-    </div><br>
-    <button type="submit" class="button button3">Ban trainer</button>
+
+<form th:action="@{panelAdminGen}" th:object="${generacje}" method="post">
+  	<label>First generation:</label>
+  	<br><br>
+  <select name="gen1" id="gen" th:field="${generacje.genOne}">
+    <option value="true">Activate</option>
+    <option value="false">Deactivate</option>
+  </select>
+    <br><br>
+     <label>Second generation:</label>
+  	<br><br>
+  <select name="gen2" id="gen" th:field="${generacje.genTwo}">
+    <option value="true">Activate</option>
+    <option value="false">Deactivate</option>
+  </select>
+    <br><br>
+      <label>Third generation:</label>
+  	<br><br>
+  <select name="gen3" id="gen" th:field="${generacje.genThree}">
+    <option value="true">Activate</option>
+    <option value="false">Deactivate</option>
+  </select>
+  <br><br>
+  <input type="submit" value="Submit">
 </form>
+<b><big id="emailHelp" class="heading">Generations has been update!</big></b>
 
 
 <div class = "footer">

@@ -145,29 +145,48 @@ public class PosiadaneKarty{
 	
 	public static int numerKartyZGeneracji() {
 		
-		int numer = 0;
-		boolean gen1 = Generacje.genOne;
-		boolean gen2 = Generacje.genTwo;
-		boolean gen3 = Generacje.genThree;
+		int numer = 1;
+		boolean gen1 = Generacje.pobierzGenOne();
+		boolean gen2 = Generacje.pobierzGenTwo();
+		boolean gen3 = Generacje.pobierzGenThree();
 		
-		if(!gen2 && !gen3) // 0 or 1
+		System.out.println(Generacje.pobierzGenOne());
+		System.out.println(Generacje.pobierzGenTwo());
+		System.out.println(Generacje.pobierzGenThree());
+		
+		if(!gen2 && !gen3) { // 0 or 1
 			numer = (int) (Math.random() * 151 + 1);
-		else if(!gen1 && gen2 && !gen3) // 2
+			return numer;
+		}
+		else if(!gen1 && gen2 && !gen3) { // 2
 			numer = (int) (Math.random() * 100 + 152);
-		else if(!gen1 && !gen2 && gen3) // 3
-			numer = (int) (Math.random() * 135 + 252);	
-		else if(gen1 && gen2 && !gen3) // 1 and 2
+			return numer;
+		}
+		else if(!gen1 && !gen2 && gen3) { // 3
+			numer = (int) (Math.random() * 135 + 252);
+			return numer;
+		}	
+		else if(gen1 && gen2 && !gen3) { // 1 and 2
 			numer = (int) (Math.random() * 251 + 1);
-		else if(!gen1 && gen2 && !gen3) // 2 and 3
+			return numer;
+		}
+		else if(!gen1 && gen2 && !gen3) {// 2 and 3
 			numer = (int) (Math.random() * 235 + 152);
-		else if(!gen1 && gen2 && !gen3) // 1 and 2 and 3
+			return numer;
+		}
+		else if(!gen1 && gen2 && !gen3) { // 1 and 2 and 3
 			numer = (int) (Math.random() * 386 + 1);
-		else if(!gen1 && gen2 && !gen3) { // 1 and 3
+			return numer;
+		}
+		else if(gen1 && !gen2 && gen3) { // 1 and 3
 			int random = (int) (Math.random() * 2);
-			if (random == 0)
+			if (random == 0) {
 				numer = (int) (Math.random() * 151 + 1);
-			else
+				return numer;
+			} else {
 				numer = (int) (Math.random() * 135 + 252);
+				return numer;
+			}
 		}
 		
 		return numer;

@@ -36,24 +36,24 @@
 <br>
 
 
-<form action="/action_page.php">
+<form th:action="@{panelAdminGen}" th:object="${generacje}" method="post">
   	<label>First generation:</label>
   	<br><br>
-  <select name="gen1" id="gen">
+  <select name="gen1" id="gen" th:field="${generacje.genOne}">
     <option value="true">Activate</option>
     <option value="false">Deactivate</option>
   </select>
     <br><br>
      <label>Second generation:</label>
   	<br><br>
-  <select name="gen2" id="gen">
+  <select name="gen2" id="gen" th:field="${generacje.genTwo}">
     <option value="true">Activate</option>
     <option value="false">Deactivate</option>
   </select>
     <br><br>
       <label>Third generation:</label>
   	<br><br>
-  <select name="gen3" id="gen">
+  <select name="gen3" id="gen" th:field="${generacje.genThree}">
     <option value="true">Activate</option>
     <option value="false">Deactivate</option>
   </select>

@@ -20,7 +20,7 @@ public class ZmianaGeneracjiController {
     public String stronaZmianyGeneracji(Model model) {
         
     	if(GraczZalogowany.id == 1){
-    		model.addAttribute("generacje", Generacje.getValues());
+    		model.addAttribute("generacje", new Generacje());
     		return "panelAdminGen";
         } else
             return "home";
@@ -28,11 +28,10 @@ public class ZmianaGeneracjiController {
     }
 
     @PostMapping(value = "/panelAdminGen")
-    public String stronaZmianyGeneracji(@ModelAttribute(name = "generacje") Gracz gracz, Model model) throws SQLException {
+    public String stronaZmianyGeneracji(@ModelAttribute(name = "generacje") Generacje generacje, Model model) throws SQLException {
         
     	if(GraczZalogowany.id == 1){
-    		
-    		
+    		Generacje.ustawGeneracje(generacje);
     		return "panelAdminGenSuccess";
         } else
             return "home";

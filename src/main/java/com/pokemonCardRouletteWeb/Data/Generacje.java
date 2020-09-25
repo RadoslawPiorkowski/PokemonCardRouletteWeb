@@ -6,82 +6,127 @@ import com.pokemonCardRouletteWeb.BazaDanych;
 
 public class Generacje {
 
-	public static boolean genOne;
-	public static boolean genTwo;
-	public static boolean genThree;
+	public boolean genOne;
+	public boolean genTwo;
+	public boolean genThree;
 	
-	static {
-		pobierzGeneracje();
-	}
-	
+
 	public Generacje() {
 		
 	}
 	
-	public static boolean isGenOne() {
+
+	
+	public boolean isGenOne() {
 		return genOne;
 	}
-	public static void setGenOne(boolean genOne) {
-		Generacje.genOne = genOne;
+
+	public void setGenOne(boolean genOne) {
+		this.genOne = genOne;
 	}
-	public static boolean isGenTwo() {
+
+	public boolean isGenTwo() {
 		return genTwo;
 	}
-	public static void setGenTwo(boolean genTwo) {
-		Generacje.genTwo = genTwo;
+
+	public void setGenTwo(boolean genTwo) {
+		this.genTwo = genTwo;
 	}
-	public static boolean isGenThree() {
+
+
+	public boolean isGenThree() {
 		return genThree;
 	}
-	public static void setGenThree(boolean genThree) {
-		Generacje.genThree = genThree;
-	}
-	
-	public static boolean[] getValues() {
-		boolean[] wartosci = new boolean[3];
-		
-		return wartosci;
-	}
-	
-	public static void pobierzGeneracje() {
-		
-		try {
-			
-			ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM GENERACJA");
-			data.next();
-			
-			genOne = data.getBoolean("GEN_ONE");
-			genTwo = data.getBoolean("GEN_TWO");
-			genThree = data.getBoolean("GEN_THREE");
-	
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-			genOne = true;
-			genTwo = false;
-			genThree = false;
-		}
+
+	public void setGenThree(boolean genThree) {
+		this.genThree = genThree;
 	}
 
 	
-	public static void ustawGeneracje(boolean one, boolean two, boolean three) {
+	
+//	public static void pobierzGeneracje() {
+//		
+//		try {
+//			
+//			ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM GENERACJA;");
+//			data.next();
+//			
+//			genOne = data.getBoolean("GEN_ONE");
+//			genTwo = data.getBoolean("GEN_TWO");
+//			genThree = data.getBoolean("GEN_THREE");
+//	
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//
+//		}
+//	}
+
+	public static boolean pobierzGenOne() {
 		
 		try {
 			
-			BazaDanych.getStatmentBD().execute("UPDATE GENERACJA SET GEN_ONE = " + one + ";");
-			BazaDanych.getStatmentBD().execute("UPDATE GENERACJA SET GEN_TWO = " + two + ";");
-			BazaDanych.getStatmentBD().execute("UPDATE GENERACJA SET GEN_THREE = " + three + ";");
+			ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM GENERACJA;");
+			data.next();
+			
+			return data.getBoolean("GEN_ONE");
+	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
+	public static boolean pobierzGenTwo() {
+		
+		try {
+			
+			ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM GENERACJA;");
+			data.next();
+			
+			return data.getBoolean("GEN_TWO");
+	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
+	public static boolean pobierzGenThree() {
+		
+		try {
+			
+			ResultSet data = BazaDanych.getStatmentBD().executeQuery("SELECT * FROM GENERACJA;");
+			data.next();
+			
+			return data.getBoolean("GEN_THREE");
+	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
+	public static void ustawGeneracje(Generacje generacje) {
+		
+		try {
+			
+			BazaDanych.getStatmentBD().execute("UPDATE GENERACJA SET GEN_ONE = " + generacje.isGenOne() + ";");
+			BazaDanych.getStatmentBD().execute("UPDATE GENERACJA SET GEN_TWO = " + generacje.isGenTwo() + ";");
+			BazaDanych.getStatmentBD().execute("UPDATE GENERACJA SET GEN_THREE = " + generacje.isGenThree() + ";");
 			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			
-			genOne = true;
-			genTwo = false;
-			genThree = false;
 		}
 	}
 	
+
 }
 

@@ -1,5 +1,6 @@
 package com.pokemonCardRouletteWeb.Controllers;
 
+import com.pokemonCardRouletteWeb.Data.Generacje;
 import com.pokemonCardRouletteWeb.Data.Gracz;
 import com.pokemonCardRouletteWeb.Data.GraczZalogowany;
 import org.springframework.stereotype.Controller;
